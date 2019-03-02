@@ -45,8 +45,7 @@ public class IsLogIn extends HttpServlet {
 //        String json = "{userName:\"guohaodong\",password:\"wenzhu27\",email:\"1234567@qq.com\"}";
 //        TODO 获取前端json
 
-        //        test Code
-
+        //        获取json
             BufferedReader br = new BufferedReader(new InputStreamReader(
                     request.getInputStream(), StandardCharsets.UTF_8 ));
 
@@ -56,17 +55,13 @@ public class IsLogIn extends HttpServlet {
                 sb.append(temp);
             }
             br.close();
-
-        String json = URLDecoder.decode ( sb.toString (),"utf-8" );
+            String json = URLDecoder.decode ( sb.toString (),"utf-8" );
 
 //        解析json为users对象
         Gson gson = new Gson();
-//        json = gson.toJson ( json );
-//        String json = request.getParameter ( "email" );
-//        String json2 = request.getParameter ( "user" );
+
 
         Users user = gson.fromJson ( json,Users.class );
-
 //        创建json 表示状态
         StringBuilder result = new StringBuilder("status:");
         try {

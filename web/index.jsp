@@ -10,42 +10,43 @@
   <head>
     <title>LogIn</title>
     <%--导入js文件--%>
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <%--为文本框绑定事件--%>
-    <%--<script>--%>
-      <%--$(function(){--%>
-        <%--//焦点失去事件--%>
-        <%--$("#userEmail").blur(function () {--%>
+  <%--<script>--%>
+  <%--$(function(){--%>
+  <%--//焦点失去事件--%>
+  <%--$("#userEmail").blur(function () {--%>
 
-          <%--var userEmail = $(this).val();--%>
-          <%--var test = "test"--%>
-            <%--$("#userShow").text("");--%>
-          <%--if(userEmail==null || ""=== userEmail){--%>
-            <%--$("#userShow").text("username can\'t be blank");--%>
-            <%--$("#userShow").css("background-color","green");--%>
-          <%--}else{--%>
-          <%--//  使用ajax jQuery--%>
-            <%--$.ajax({--%>
-              <%--"url": "servlet/IsRegister",--%>
-              <%--"type":"post",--%>
-              <%--"data" : "test="+test,--%>
-              <%--"dataType":"text",--%>
-              <%--"success":function(isRegister){--%>
-                  <%--alert("connection to server success");--%>
-                  <%--alert(isRegister);--%>
-                  <%--var data = JSON.parse(isRegister);--%>
-                  <%--alert(data);--%>
-              <%--},--%>
-              <%--"error":function () {--%>
-                <%--alert("connection load failure");--%>
-              <%--}--%>
-            <%--});--%>
-          <%--}--%>
-        <%--});--%>
-      <%--});--%>
-    <%--</script>--%>
+  <%--var userEmail = $(this).val();--%>
+  <%--var test = "test"--%>
+  <%--$("#userShow").text("");--%>
+  <%--if(userEmail==null || ""=== userEmail){--%>
+  <%--$("#userShow").text("username can\'t be blank");--%>
+  <%--$("#userShow").css("background-color","green");--%>
+  <%--}else{--%>
+  <%--//  使用ajax jQuery--%>
+  <%--$.ajax({--%>
+  <%--"url": "servlet/IsRegister",--%>
+  <%--"type":"post",--%>
+  <%--"data" : "test="+test,--%>
+  <%--"dataType":"text",--%>
+  <%--"success":function(isRegister){--%>
+  <%--alert("connection to server success");--%>
+  <%--alert(isRegister);--%>
+  <%--var data = JSON.parse(isRegister);--%>
+  <%--alert(data);--%>
+  <%--},--%>
+  <%--"error":function () {--%>
+  <%--alert("connection load failure");--%>
+  <%--}--%>
+  <%--});--%>
+  <%--}--%>
+  <%--});--%>
+
+  <%--});--%>
+  <%--</script>--%>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script>
-      $(function () {
+    $(function () {
       $("#userEmail").blur(function () {
         var userEmail = $("#userEmail").val();
         var password = $("#password").val();
