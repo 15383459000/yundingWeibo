@@ -5,6 +5,7 @@ import java.sql.Date;
 
 public class Blog {
     private int id;
+    private int u_id;
     private String userName;
     private Clob content;
     private Date blogTime;
@@ -12,16 +13,25 @@ public class Blog {
     private int share;
     private String greatPerson;
     private String sharePerson;
+    private String comment;
+    private String[] images;
+    private String title;
 
     public Blog(){}
-    public Blog(int id, String userName, Clob content, Date blogTime, int great, int share, String greatPerson, String sharePerson) {
+
+    public Blog(int id, int u_id, String userName, Clob content, Date blogTime, int great, int share, String greatPerson, String sharePerson, String comment, String[] images, String title) {
         this.id = id;
+        this.u_id = u_id;
         this.userName = userName;
         this.content = content;
+        this.blogTime = blogTime;
         this.great = great;
         this.share = share;
         this.greatPerson = greatPerson;
         this.sharePerson = sharePerson;
+        this.comment = comment;
+        this.images = images;
+        this.title = title;
     }
 
     public int getId() {

@@ -355,7 +355,19 @@ public class BlogDao {
         preparedStatement.setString ( 1,b_id );
         preparedStatement.execute ();
         ResultSet resultSet = preparedStatement.getResultSet ();
-        Blog blog = new Blog(resultSet.getInt ( "id" ))
+        Blog blog = new Blog(
+                resultSet.getInt ( "id" ),
+                resultSet.getInt ( "u_id" ),
+                resultSet.getString ( "userName" ),
+                resultSet.getClob ( "content" ),
+                resultSet.getDate ( "blogTime" ),
+                resultSet.getInt ( "great" ),
+                resultSet.getInt ( "share" ),
+                resultSet.getString ( "greatPerson" ),
+                resultSet.getString ( "sharePerson" ),
+                resultSet.getString ( "comment" ),
+                resultSet.getString ( "image" ),
+                resultSet.getString ( "title" ));
     }
 }
 

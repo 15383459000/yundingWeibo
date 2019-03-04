@@ -11,6 +11,7 @@ import java.nio.charset.StandardCharsets;
  * 获取request中的json数据
  * @author guohaodong
  */
+// todo
 public class Json {
     public static String getJson (HttpServletRequest request) throws IOException {
         //        获取json
