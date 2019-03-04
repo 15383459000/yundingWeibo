@@ -1,5 +1,7 @@
 package servlet;
 
+import com.google.gson.Gson;
+import util.Json;
 import util.Mailet;
 
 import javax.mail.MessagingException;
@@ -12,9 +14,22 @@ import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
+/**
+ * @author guohaodong
+ */
 @WebServlet(name = "GetIdentifyingCode",urlPatterns = "/servlet/GetIdentifyingCode")
 public class GetIdentifyingCode extends HttpServlet {
+    /**
+     * 获取email发送验证码并将验证码返回
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        设置编码格式
@@ -23,17 +38,12 @@ public class GetIdentifyingCode extends HttpServlet {
         response.setCharacterEncoding ( "utf-8" );
 //        获取用户邮箱
 
-//        test Code
-        /*BufferedReader br = new BufferedReader(new InputStreamReader (request.getInputStream(),"utf-8"));
-        String line = null;
-        StringBuilder sb = new StringBuilder();
-        while ((line = br.readLine()) != null) {
-            sb.append(line);
-        }*/
+        String json = Json.getJson (request);
+        Gson gson = new Gson ();
+        Map map = new HashMap<> ( 1 );
+        map = gson.fromJson ( json, map.getClass ());
 
-        String email = request.getParameter ( "email" );
-//        假数据
-//        String email = "1079407476@qq.com";
+        String email = map.get ( "email" ).toString ();
 //        发送验证码
         Mailet mailet = new Mailet();
         String identify = null;
@@ -43,8 +53,8 @@ public class GetIdentifyingCode extends HttpServlet {
             e.printStackTrace ();
         }finally {
 //            将验证码存储到session对象中
-            HttpSession session = request.getSession ();
-            session.setAttribute ( "identify", identify );
+            PrintWriter printWriter = response.getWriter ();
+            printWriter.print ( "{\"identify\":\""+identify+"\"}" );
         }
 
     }

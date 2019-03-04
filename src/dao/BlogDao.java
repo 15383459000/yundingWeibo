@@ -1,7 +1,8 @@
 package dao;
 
+import com.mysql.cj.protocol.Resultset;
 import entity.Blog;
-import util.DButil;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -82,7 +83,8 @@ public class BlogDao {
         ArrayList<Blog> list = new ArrayList<Blog>(); // 文章集合
         try {
             conn = DButil.getConnection();
-            String sql = "select * from blog where u_id=?;"; // SQL语句
+            // SQL语句
+            String sql = "select * from blog where u_id=?;";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
             rs = stmt.executeQuery();
@@ -284,7 +286,8 @@ public class BlogDao {
         int great = 0;
         try {
             conn = DButil.getConnection();
-            String sql = "select great from blog where id=?;";// SQL语句
+            // SQL语句
+            String sql = "select great from blog where id=?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, Integer.valueOf(id));
             rs= stmt.executeQuery();
@@ -321,7 +324,7 @@ public class BlogDao {
      * @param statement
      * @param resultSet
      */
-    private void closeAll(PreparedStatement statement,ResultSet resultSet){
+    protected void closeAll(PreparedStatement statement,ResultSet resultSet){
         // 释放数据集对象
         if (resultSet != null) {
             try {
@@ -341,21 +344,18 @@ public class BlogDao {
             }
         }
     }
-
-   /* // DEBUG
-    public static void main(String[] args) {
-        BlogDao b=new BlogDao();
-       // b.addGreat("2");
-        //b.deleteBlog("2");
-        //b.updateBlog("2","ok");
-        try {
-
-            b.createBlog("1", "tom", "sb");
-
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-
-    }*/
+    /**
+     * 通过b_id获得文章
+     */
+    public Blog getBlogById( String b_id) throws SQLException, ClassNotFoundException {
+        Connection connection = DButil.getConnection ();
+        // SQL语句
+        String sql = "select * from blog where id=?;";
+        PreparedStatement preparedStatement = connection.prepareStatement ( sql );
+        preparedStatement.setString ( 1,b_id );
+        preparedStatement.execute ();
+        ResultSet resultSet = preparedStatement.getResultSet ();
+        Blog blog = new Blog(resultSet.getInt ( "id" ))
+    }
 }
 

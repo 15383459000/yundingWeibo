@@ -1,7 +1,5 @@
 package entity;
 
-import java.util.Objects;
-import java.util.Set;
 
 /**
  * id 用户唯一的编号
@@ -11,6 +9,7 @@ import java.util.Set;
  * blog 文章
  * place 所在地
  * favorite 收藏
+ *
  * @author guohaodong
  */
 public class Users {
@@ -28,18 +27,29 @@ public class Users {
     private String[] tags;
     private String[] favorite;
     private Blog blog;
-
     private String email;
+
+    public String[] getImages() {
+        return images;
+    }
+
+    public void setImages(String[] images) {
+        this.images = images;
+    }
+
+    private String[] images;
 
 
 //    构造方法
 
 
-    public Users() {}
+    public Users() {
+    }
 
     /**
      * get/set 方法
-     * @return
+     *
+     * @return user属性
      */
     public String getEmail() {
         return email;
@@ -48,6 +58,7 @@ public class Users {
     public void setEmail(String email) {
         this.email = email;
     }
+
     public String getUserName() {
         return userName;
     }
@@ -159,23 +170,5 @@ public class Users {
     public void setBlog(Blog blog) {
         this.blog = blog;
     }
-    /**
-     * equals
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Users)) {
-            return false;
-        }
-        Users users = (Users) o;
-        return getUserName ().equals ( users.getUserName () );
-    }
 
-    @Override
-    public int hashCode() {
-        return 0;
-    }
 }

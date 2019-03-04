@@ -13,6 +13,17 @@ public class Blog {
     private String greatPerson;
     private String sharePerson;
 
+    public Blog(){}
+    public Blog(int id, String userName, Clob content, Date blogTime, int great, int share, String greatPerson, String sharePerson) {
+        this.id = id;
+        this.userName = userName;
+        this.content = content;
+        this.great = great;
+        this.share = share;
+        this.greatPerson = greatPerson;
+        this.sharePerson = sharePerson;
+    }
+
     public int getId() {
         return id;
     }

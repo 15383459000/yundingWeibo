@@ -1,11 +1,5 @@
-import entity.Users;
-import util.DButil;
-import util.Mailet;
-import util.UserUtil;
-
 import javax.mail.MessagingException;
 import java.sql.SQLException;
-import java.util.Set;
 
 public class test {
     public static void main(String[] args) throws SQLException, MessagingException, ClassNotFoundException {

@@ -1,10 +1,12 @@
-package util;
+package dao;
 
 
 import entity.Users;
 import java.sql.*;
 
-
+/**
+ * 
+ */
 public class DButil {
     private static final String URL = "jdbc:mysql://127.0.0.1:3306/test";
     private static final String USER = "root";
@@ -18,23 +20,20 @@ public class DButil {
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         //获得数据库连接
-        Connection connection = DriverManager.getConnection(URL,USER,PASSWORD);
-        return  connection;
+        return DriverManager.getConnection(URL,USER,PASSWORD);
     }
 
     /**
      *数据库查询
-     * @param column
-     * @param value
-     * @return
-     * @throws SQLException
-     * @throws ClassNotFoundException
+     * @param column 字段名
+     * @param value 字段值
+     * @return users对象
+     * @throws SQLException 数据库错误
+     * @throws ClassNotFoundException jar包错误
      */
     public static Users referUser(String column ,Object value) throws SQLException, ClassNotFoundException {
         Connection connection = DButil.getConnection ();
-        StringBuilder sql = new StringBuilder ( "select * from UsersInformation where " );
-        sql.append ( column ).append ( "=\"" ).append ( value ).append ( "\"" );
-        PreparedStatement preparedStatement = connection.prepareStatement ( sql.toString () );
+        PreparedStatement preparedStatement = connection.prepareStatement ( "select * from UsersInformation where " + column + "=\"" + value + "\"" );
         preparedStatement.executeQuery ();
         ResultSet resultSet = preparedStatement.getResultSet ();
         Users user = null;
@@ -44,6 +43,7 @@ public class DButil {
             user.setUserName ( resultSet.getString ( "userName" ) );
             user.setPassword ( resultSet.getString ( "password" ) );
             user.setEmail ( resultSet.getString ( "email" ) );
+            user.setRegisterTime ( resultSet.getString ( "registerTime" ) );
         }
         connection.close ();
         return user;
