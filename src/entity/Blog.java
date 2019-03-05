@@ -19,7 +19,7 @@ public class Blog {
 
     public Blog(){}
 
-    public Blog(int id, int u_id, String userName, Clob content, Date blogTime, int great, int share, String greatPerson, String sharePerson, String comment, String[] images, String title) {
+    public Blog(int id, int u_id, String userName, Clob content, Date blogTime, int great, int share, String greatPerson, String sharePerson, String comment, String images, String title) {
         this.id = id;
         this.u_id = u_id;
         this.userName = userName;
@@ -30,7 +30,7 @@ public class Blog {
         this.greatPerson = greatPerson;
         this.sharePerson = sharePerson;
         this.comment = comment;
-        this.images = images;
+        this.images = images.split ( "#" );
         this.title = title;
     }
 

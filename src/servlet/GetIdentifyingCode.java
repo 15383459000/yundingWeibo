@@ -34,7 +34,7 @@ public class GetIdentifyingCode extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        设置编码格式
         request.setCharacterEncoding ( "utf-8" );
-        response.setContentType ( "html/text" );
+        response.setContentType ( "json" );
         response.setCharacterEncoding ( "utf-8" );
 //        获取用户邮箱
 
@@ -52,9 +52,11 @@ public class GetIdentifyingCode extends HttpServlet {
         }catch (MessagingException e) {
             e.printStackTrace ();
         }finally {
-//            将验证码存储到session对象中
+//            将验证码传输到前端
             PrintWriter printWriter = response.getWriter ();
             printWriter.print ( "{\"identify\":\""+identify+"\"}" );
+            printWriter.flush ();
+            printWriter.close ();
         }
 
     }

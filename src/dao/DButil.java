@@ -24,7 +24,7 @@ public class DButil {
     }
 
     /**
-     *数据库查询
+     *数据库查询返回user对象
      * @param column 字段名
      * @param value 字段值
      * @return users对象

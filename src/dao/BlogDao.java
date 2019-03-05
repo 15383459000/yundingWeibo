@@ -368,6 +368,7 @@ public class BlogDao {
                 resultSet.getString ( "comment" ),
                 resultSet.getString ( "image" ),
                 resultSet.getString ( "title" ));
+        return blog;
     }
 }
 

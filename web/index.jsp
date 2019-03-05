@@ -16,16 +16,20 @@
                 // var userEmail = $("#userEmail").val();
                 // var password = $("#password").val();
 
-                var testUrl = "servlet/GetIdentifyingCode";
+                var testUrl = "servlet/IsLogIn";
                 var json =
-                    {"email":"123@qq.com"};
+                    {
+                        "email": "123@qq.com",
+                        "password": "123"
+                    };
                 $.ajax({
                     "url": testUrl,
                     "type":"post",
                     "data" : JSON.stringify(json),
                     "dataType":"json",
                     "success":function(date){
-                        alert(date);
+                        alert(JSON.parse(date));
+
                     },
                     "error":function () {
                         alert("connection load failure");
@@ -38,11 +42,6 @@
 <body>
 
     <button type="button" id="test">test</button>
-    <form action = servlet/BlogServlet , method="post">
-        <select>
-            <option value = "addBlog" name = "action">addBlog</option>
-        </select>
-    </form>
 
 
 </body>
