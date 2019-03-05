@@ -6,34 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4248c56-9d94-4719-8871-a4b154d35c7d" name="Default Changelist" comment="index.jsp有测试接口功能">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/WEB-INF/classes/dao/BlogDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/WEB-INF/classes/dao/BlogDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/WEB-INF/classes/dao/DButil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/WEB-INF/classes/dao/DButil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/WEB-INF/classes/entity/Blog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/WEB-INF/classes/entity/Blog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/WEB-INF/classes/servlet/BlogServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/WEB-INF/classes/servlet/BlogServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/WEB-INF/classes/servlet/GetIdentifyingCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/WEB-INF/classes/servlet/GetIdentifyingCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/WEB-INF/classes/servlet/IsLogIn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/WEB-INF/classes/servlet/IsLogIn.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/WEB-INF/classes/servlet/IsRegister.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/WEB-INF/classes/servlet/Register.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/WEB-INF/classes/servlet/Register.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/WEB-INF/classes/util/Json.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/WEB-INF/classes/util/Json.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/SimpleWeibo_war_exploded/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimpleWeibo/dao/BlogDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimpleWeibo/dao/BlogDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimpleWeibo/dao/DButil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimpleWeibo/dao/DButil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimpleWeibo/entity/Blog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimpleWeibo/entity/Blog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimpleWeibo/servlet/BlogServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimpleWeibo/servlet/BlogServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimpleWeibo/servlet/GetIdentifyingCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimpleWeibo/servlet/GetIdentifyingCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimpleWeibo/servlet/IsLogIn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimpleWeibo/servlet/IsLogIn.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimpleWeibo/servlet/IsRegister.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimpleWeibo/servlet/Register.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimpleWeibo/servlet/Register.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SimpleWeibo/util/Json.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SimpleWeibo/util/Json.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/BlogDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/BlogDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/DButil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/DButil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Blog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servlet/BlogServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/BlogServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servlet/GetIdentifyingCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/GetIdentifyingCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="b4248c56-9d94-4719-8871-a4b154d35c7d" name="Default Changelist" comment="index.jsp有测试接口功能" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -96,11 +69,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/servlet/BlogServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="49" column="51" selection-start-line="49" selection-start-column="51" selection-end-line="49" selection-end-column="51" />
+            <state relative-caret-position="264">
+              <caret line="54" column="61" lean-forward="true" selection-start-line="54" selection-start-column="61" selection-end-line="54" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -153,7 +126,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="234">
@@ -658,7 +631,7 @@
       <workItem from="1551534043853" duration="2407000" />
       <workItem from="1551577519020" duration="1796000" />
       <workItem from="1551579935132" duration="20838000" />
-      <workItem from="1551696262512" duration="14651000" />
+      <workItem from="1551696262512" duration="15195000" />
     </task>
     <task id="LOCAL-00001" summary="n">
       <created>1551534172326</created>
@@ -674,11 +647,18 @@
       <option name="project" value="LOCAL" />
       <updated>1551698374034</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="&quot;请使用json传输&quot;">
+      <created>1551785201269</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1551785201270</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="189724000" />
+    <option name="totallyTimeSpent" value="190268000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -778,7 +758,8 @@
     </ignored-roots>
     <MESSAGE value="n" />
     <MESSAGE value="index.jsp有测试接口功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="index.jsp有测试接口功能" />
+    <MESSAGE value="&quot;请使用json传输&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;请使用json传输&quot;" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1001,26 +982,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlet/BlogServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="49" column="51" selection-start-line="49" selection-start-column="51" selection-end-line="49" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/Json.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="25" column="76" selection-start-line="25" selection-start-column="76" selection-end-line="25" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/util/Mail.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -1055,13 +1016,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlet/GetIdentifyingCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-216">
-          <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/servlet/IsLogIn.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1076,6 +1030,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="25" column="35" lean-forward="true" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/Json.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="76" selection-start-line="25" selection-start-column="76" selection-end-line="25" selection-end-column="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlet/GetIdentifyingCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-216">
+          <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlet/BlogServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="54" column="61" lean-forward="true" selection-start-line="54" selection-start-column="61" selection-end-line="54" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
