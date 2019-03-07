@@ -1,0 +1,24 @@
+-- auto-generated definition
+create table UsersInformation
+(
+  id           int auto_increment
+    primary key,
+  nickName     varchar(10)             null,
+  userName     varchar(10)             null,
+  password     varchar(16)             not null,
+  sex          varchar(5) default '保密' null,
+  birthday     varchar(10)             null,
+  autograph    varchar(30)             null,
+  registerTime varchar(10)             null,
+  qq           varchar(15)             null,
+  graduateFrom varchar(20)             null,
+  tags         varchar(30)             null,
+  favorite     text                    null,
+  email        varchar(30)             null,
+  place        varchar(20)             null,
+  image        text                    null,
+  constraint UsersInformation_email_uindex
+    unique (email)
+)
+  comment '用户信息';
+
