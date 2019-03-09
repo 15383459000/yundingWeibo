@@ -8,6 +8,8 @@ import java.sql.*;
  * 
  */
 public class DButil {
+    //todo 修改为正确的数据库
+
     private static final String URL = "jdbc:mysql://127.0.0.1:3306/test";
     private static final String USER = "root";
     private static final String PASSWORD = "wenzhu27";
@@ -44,6 +46,7 @@ public class DButil {
             user.setPassword ( resultSet.getString ( "password" ) );
             user.setEmail ( resultSet.getString ( "email" ) );
             user.setRegisterTime ( resultSet.getString ( "registerTime" ) );
+            user.setId ( resultSet.getInt ( "id" ) );
         }
         connection.close ();
         return user;

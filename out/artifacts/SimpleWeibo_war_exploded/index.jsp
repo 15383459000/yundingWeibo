@@ -12,23 +12,29 @@
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script>
         $(function () {
-            $("#test").click(function () {
+            $("#Upload").click(function () {
                 // var userEmail = $("#userEmail").val();
                 // var password = $("#password").val();
 
                 var testUrl = "servlet/IsLogIn";
                 var json =
                     {
-                        "email": "123@qq.com",
-                        "password": "123"
-                    }
+                        "action": "addBlog",
+                        "blog": {
+                            "u_id": "123",
+                            "userName": "fairy",
+                            "content": "I love programmer"
+                        }
+                    };
                 $.ajax({
                     "url": testUrl,
                     "type":"post",
                     "data" : JSON.stringify(json),
                     "dataType":"json",
                     "success":function(date){
-                        alert(JSON.parse(date));
+                        var string = JSON.stringify(date);
+                        // alert(string);
+                        $("#out").text(string);
 
                     },
                     "error":function () {
@@ -40,9 +46,13 @@
     </script>
 </head>
 <body>
-
-    <button type="button" id="test">test</button>
-
+<form action="servlet/Upload" enctype="multipart/form-data" method="post">
+    上传用户：<input type="text" name="username"><br/>
+    上传文件1：<input type="file" name="file1"><br/>
+    上传文件2：<input type="file" name="file2"><br/>
+    <input type="submit" value="提交" >
+</form>
+<p><button type="submit" id="Upload">test</button><span id="out" ></span></p>
 
 </body>
 </html>

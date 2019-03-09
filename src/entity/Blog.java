@@ -1,14 +1,18 @@
 package entity;
 
+import dao.UserUtil;
+
 import java.sql.Clob;
 import java.sql.Date;
+import java.sql.SQLException;
 
 public class Blog {
     private int id;
     private int u_id;
     private String userName;
-    private Clob content;
-    private Date blogTime;
+    private Users origin;
+    private String content;
+    private String blogTime;
     private int great;
     private int share;
     private String greatPerson;
@@ -19,10 +23,11 @@ public class Blog {
 
     public Blog(){}
 
-    public Blog(int id, int u_id, String userName, Clob content, Date blogTime, int great, int share, String greatPerson, String sharePerson, String comment, String images, String title) {
+    public Blog(int id, int u_id, String userName, Users origin, String content, String blogTime, int great, int share, String greatPerson, String sharePerson, String comment, String[] images, String title) {
         this.id = id;
         this.u_id = u_id;
         this.userName = userName;
+        this.origin = origin;
         this.content = content;
         this.blogTime = blogTime;
         this.great = great;
@@ -30,7 +35,51 @@ public class Blog {
         this.greatPerson = greatPerson;
         this.sharePerson = sharePerson;
         this.comment = comment;
-        this.images = images.split ( "#" );
+        this.images = images;
+        this.title = title;
+    }
+
+    public Users getOrigin() throws SQLException, ClassNotFoundException {
+        UserUtil userUtil = new UserUtil ();
+        this.origin = userUtil.getUsersById ( String.valueOf ( origin ) );
+        return origin;
+    }
+
+    public void setOrigin(int origin) throws SQLException, ClassNotFoundException {
+        //todo
+        UserUtil userUtil = new UserUtil ();
+        this.origin = userUtil.getUsersById ( String.valueOf ( origin ) );
+    }
+
+    public int getU_id() {
+        return u_id;
+    }
+
+    public void setU_id(int u_id) {
+        this.u_id = u_id;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String[] getImages() {
+        return images;
+    }
+
+    public void setImages(String[] images) {
+        this.images = images;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
         this.title = title;
     }
 
@@ -50,19 +99,24 @@ public class Blog {
         this.userName = userName;
     }
 
-    public Clob getContent() {
+    public void setOrigin(Users origin) {
+        this.origin = origin;
+    }
+
+    public String getContent() {
         return content;
     }
 
-    public void setContent(Clob content) {
+    public void setContent(String content) {
         this.content = content;
     }
 
-    public Date getBlogTime() {
+
+    public String getBlogTime() {
         return blogTime;
     }
 
-    public void setBlogTime(Date blogTime) {
+    public void setBlogTime(String blogTime) {
         this.blogTime = blogTime;
     }
 

@@ -38,7 +38,7 @@ public class GetIdentifyingCode extends HttpServlet {
         response.setCharacterEncoding ( "utf-8" );
 //        获取用户邮箱
 
-        String json = Json.getJson (request);
+        String json = Json.getString ( request );
         Gson gson = new Gson ();
         Map map = new HashMap<> ( 1 );
         map = gson.fromJson ( json, map.getClass ());

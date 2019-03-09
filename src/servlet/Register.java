@@ -1,7 +1,7 @@
 package servlet;
 
 import com.google.gson.Gson;
-import entity.UserJson;
+import entity.BlogS;
 import entity.Users;
 import util.Json;
 import dao.UserUtil;
@@ -32,7 +32,7 @@ import java.util.Date;
  *   -1 验证码错误
  *   0  内部错误
  *   1  成功
- *
+ * @author guohaodong
  */
 @WebServlet(name = "Register",urlPatterns = "/servlet/Register")
 public class Register extends HttpServlet {
@@ -53,57 +53,63 @@ public class Register extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //        设置编码格式
+        response.setContentType ( "json" );
         request.setCharacterEncoding ( "utf-8" );
         response.setCharacterEncoding ( "utf-8" );
-        response.setContentType ( "text/html" );
-//        获取输出（printWriter）
+        //        获取输出（printWriter）
         PrintWriter out = response.getWriter ();
 
 //          实例化用户工具
         UserUtil userUtil = new UserUtil ();
 
 //        获取json
-        String json = Json.getJson (request);
-
-//        获取正确的验证码,清除原来的验证码
-        String identify = request.getSession ().getAttribute("identify").toString ();
-
+        String json = Json.getString ( request );
         Gson gson = new Gson ();
-        UserJson userJson = gson.fromJson ( json, UserJson.class );
-        String code = userJson.getCode ();
-        String action = userJson.getAction ();
 
-        if(!code.equals ( identify )){
-//            验证码错误 -1
-            out.print ( "-1" );
+//        获取 正确的验证码identify,用户提交的验证码code,用户的行为action
+        BlogS blogs = gson.fromJson ( json, BlogS.class );
+        String identify = blogs.getIdentify ();
+        String code = blogs.getCode ();
+        String action = blogs.getAction ();
+        //todo 调试完成后删除
+        if (false) {
+//        if(!code.equals ( identify )){
+//            验证码错误 0
+            out.print ( "{\"status\":\"0\"}" );
+            out.flush ();
+            out.close ();
         }
         else{
-//            作废已使用的验证码
-            request.getSession ().removeAttribute ( "identify" );
 
 //            验证成功，在数据库中添加用户
 //            创建用户对象
-            Users user = userJson.getUser ();
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat ( "yyyy-MM-dd" );
-            user.setRegisterTime ( simpleDateFormat.format ( new Date (  ) ) );
+            Users user = blogs.getUsers ();
+
             try {
 //                action "register" 注册
 //                修改密码
                 final String  register = "register";
                 if(action.equals ( register )){
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat ( "yyyy-MM-dd" );
+                    user.setRegisterTime ( simpleDateFormat.format ( new Date () ) );
                     userUtil.addUser ( user );
                 }
                 else{
                     userUtil.modifyUser ( user );
                 }
+                //            成功返回 1
+                out.print ( "{\"status\":\"1\"}" );
             }catch (SQLException | ClassNotFoundException ignore) {
 //                出现错误返回 0
-                out.print ( "0" );
+                out.print ( "{\"status\":\"-1\"}" );
+            } finally {
+                out.flush ();
+                out.close ();
             }
-            request.getSession ().removeAttribute ( "identify" );
-//            成功返回 1
-            out.print ( "1" );
+//            request.getSession ().removeAttribute ( "identify" );
+
         }
+
 
     }
 
