@@ -37,24 +37,21 @@ public class Transmit extends HttpServlet {
         //        获取json
         BlogS blogS = gson.fromJson ( Json.getString ( request ), BlogS.class );
 
-
-        Blog blog;
+        Users user = blogS.getUsers ();
         try {
-            Users user = blogS.getUsers ();
-            blog = blogDao.getBlogByBid ( String.valueOf ( blogS.getBlog ().getId () ) );
+            Blog blog = blogDao.getBlogById ( String.valueOf ( blogS.getBlog ().getId () ) );
             blog.setUserName ( user.getUserName () );
             blog.setU_id ( user.getId () );
             blogDao.addBlog ( blog );
-            out.print ( "{\"status\":\"1\"}" );
         }catch (SQLException | ClassNotFoundException e) {
-            out.print ( "{\"status\":\"-1\"}" );
-        } finally {
-//            输出 status 值
-            out.flush ();
-            out.close ();
+            e.printStackTrace ();
         }
-
-
+        out.print ( "{\"status\":\"1\"}" );
+//            输出 status 值
+        out.flush ();
+        out.close ();
     }
 
+
 }
+

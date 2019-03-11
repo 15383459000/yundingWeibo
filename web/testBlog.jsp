@@ -16,10 +16,14 @@
                 // var userEmail = $("#userEmail").val();
                 // var password = $("#password").val();
 
-                var testUrl = "servlet/BlogServlet";
+                var testUrl = "servlet/Transmit";
                 var json =
-                    {"action": "addShare", "blog": {"u_id": "19", "id": "4"}};
-
+                    {
+                        "users": {"id": 12, "userName": "fang"},
+                        "blog": {
+                            "id": "8"
+                        }
+                    };
                 $.ajax({
                     "url": testUrl,
                     "type": "post",

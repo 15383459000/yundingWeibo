@@ -2,10 +2,8 @@ package servlet;
 
 import com.google.gson.Gson;
 import dao.BlogDao;
-import entity.Blog;
 import entity.BlogS;
 import util.Json;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,20 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.*;
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 
 /**
  * @author SongYuChao
  */
 @WebServlet(name = "BlogServlet", urlPatterns = "/servlet/BlogServlet")
 public class BlogServlet extends HttpServlet {
-    private String action;
     //表示博客的动作 ,add,search,delete,update
-    //博客业务逻辑类的对象
+
+    private String action;
     private BlogDao blogDao = new BlogDao ();
 
     @Override
@@ -58,7 +52,12 @@ public class BlogServlet extends HttpServlet {
             if (action.equals ( "searchBlogs" )) {
                 //向服务器请求要查询的用户id，返回此用户所有文章
                 //List<Blog> list =new ArrayList();
-                String json = gson.toJson ( blogDao.getAllBlogById ( blogS.getBlog ().getU_id () ) );
+                String json = null;
+                try {
+                    json = gson.toJson ( blogDao.getAllBlogById ( blogS.getBlog ().getU_id () ) );
+                }catch (SQLException | ClassNotFoundException e) {
+                    e.printStackTrace ();
+                }
                 System.out.println ( json );
                 out.println ( json );
                 out.flush ();

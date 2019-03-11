@@ -50,9 +50,11 @@
     上传用户：<input type="text" name="username"><br/>
     上传文件1：<input type="file" name="file1"><br/>
     上传文件2：<input type="file" name="file2"><br/>
-    <input type="submit" value="提交" >
+    <input type="submit" value="提交">
 </form>
-<p><button type="submit" id="Upload">test</button><span id="out" ></span></p>
+<p>
+    <button type="submit" id="Upload">test</button>
+    <span id="out"></span></p>
 
 </body>
 </html>

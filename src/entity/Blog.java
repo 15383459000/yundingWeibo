@@ -10,7 +10,7 @@ public class Blog {
     private int id;
     private int u_id;
     private String userName;
-    private Users origin;
+    private int origin;
     private String content;
     private String blogTime;
     private int great;
@@ -23,7 +23,7 @@ public class Blog {
 
     public Blog(){}
 
-    public Blog(int id, int u_id, String userName, Users origin, String content, String blogTime, int great, int share, String greatPerson, String sharePerson, String comment, String[] images, String title) {
+    public Blog(int id, int u_id, String userName, int origin, String content, String blogTime, int great, int share, String greatPerson, String sharePerson, String comment, String[] images, String title) {
         this.id = id;
         this.u_id = u_id;
         this.userName = userName;
@@ -39,16 +39,13 @@ public class Blog {
         this.title = title;
     }
 
-    public Users getOrigin() throws SQLException, ClassNotFoundException {
-        UserUtil userUtil = new UserUtil ();
-        this.origin = userUtil.getUsersById ( String.valueOf ( origin ) );
+
+    public int getOrigin() {
         return origin;
     }
 
-    public void setOrigin(int origin) throws SQLException, ClassNotFoundException {
-        //todo
-        UserUtil userUtil = new UserUtil ();
-        this.origin = userUtil.getUsersById ( String.valueOf ( origin ) );
+    public void setOrigin(int origin) {
+        this.origin = origin;
     }
 
     public int getU_id() {
@@ -99,9 +96,6 @@ public class Blog {
         this.userName = userName;
     }
 
-    public void setOrigin(Users origin) {
-        this.origin = origin;
-    }
 
     public String getContent() {
         return content;

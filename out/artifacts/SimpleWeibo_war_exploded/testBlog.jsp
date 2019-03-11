@@ -16,22 +16,26 @@
                 // var userEmail = $("#userEmail").val();
                 // var password = $("#password").val();
 
-                var testUrl = "servlet/BlogServlet";
+                var testUrl = "servlet/Transmit";
                 var json =
-                    {"action":"addShare","blog":{"u_id":"19","id":"4"}};
-
+                    {
+                        "users":{"id":12,"userName":"fang"},
+                        "blog": {
+                            "id": "8"
+                        }
+                    };
                 $.ajax({
                     "url": testUrl,
-                    "type":"post",
-                    "data" : JSON.stringify(json),
-                    "dataType":"json",
-                    "success":function(date){
+                    "type": "post",
+                    "data": JSON.stringify(json),
+                    "dataType": "json",
+                    "success": function (date) {
                         var string = JSON.stringify(date);
                         // alert(string);
                         $("#out").text(string);
 
                     },
-                    "error":function () {
+                    "error": function () {
                         alert("connection load failure");
                     }
                 });
@@ -46,8 +50,9 @@
     上传文件2：<input type="file" name="file2"><br/>
     <input type="submit" value="提交" >
 </form>--%>
-<p><button type="submit" id="Upload">test</button>
-    <br><span id="out" ></span></p>
+<p>
+    <button type="submit" id="Upload">test</button>
+    <br><span id="out"></span></p>
 
 </body>
 </html>

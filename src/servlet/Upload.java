@@ -15,6 +15,8 @@ import java.io.*;
 import java.util.*;
 
 /**
+ * 只能使用form表单接收
+ * 输出图片保存的路径
  * @author guohaodong
  */
 @WebServlet(name = "Upload", urlPatterns = "/servlet/Upload")

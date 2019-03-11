@@ -1478,7 +1478,7 @@
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="361" parent="327" name="sharedBlog">
+    <column id="361" parent="327" name="sharePerson">
       <Position>9</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
@@ -1491,6 +1491,7 @@
     <column id="363" parent="327" name="image">
       <Position>11</Position>
       <DataType>text|0s</DataType>
+      <DefaultExpression>&apos;#&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="364" parent="327" name="title">
