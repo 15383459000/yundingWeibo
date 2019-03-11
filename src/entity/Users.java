@@ -29,6 +29,20 @@ public class Users {
     private Blog blog;
     private String email;
 
+    /**
+     * 数组转化为字符串以 # 号隔开
+     *
+     * @param param
+     * @return
+     */
+    public static String ArrayToString(String[] param) {
+        String result = "";
+        for (String tmp : param) {
+            tmp += param;
+            result = tmp;
+        }
+        return result;
+    }
     public String[] getImages() {
         return images;
     }

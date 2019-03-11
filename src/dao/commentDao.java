@@ -32,7 +32,7 @@ public class commentDao {
 
         stmt = conn.createStatement ();
         int lastId = 0;
-        String sql = "SELECT * FROM wr.comment ";
+        String sql = "SELECT * FROM weibocomment ";
         rs = stmt.executeQuery ( sql );
         //找到最后一行
         while (rs.next ()) {
@@ -40,7 +40,7 @@ public class commentDao {
         }
         Timestamp date = new Timestamp ( new java.util.Date ().getTime () );
         //添加评论
-        String sqled = "INSERT INTO wr.comment (cid, u_id, userName,id,comment, createTime) VALUES (" + (lastId + 1) + ", ?, ?, ?, ?, ?);";
+        String sqled = "INSERT INTO weibocomment (cid, u_id, userName,id,comment, createTime) VALUES (" + (lastId + 1) + ", ?, ?, ?, ?, ?);";
         ps = conn.prepareStatement ( sqled );
         //依次输入各项参数
         ps.setString ( 1, u_Id );
@@ -55,7 +55,7 @@ public class commentDao {
     public ArrayList<Comment> getAllCommentById(int id) throws SQLException {
 
         ArrayList<Comment> list = new ArrayList<Comment> ();
-        String sql = "SELECT * from wr.blog left JOIN wr.comment on wr.blog.id=wr.comment.id WHERE blog.id= ?;";
+        String sql = "SELECT * from weibocomment left blog JOIN  on blog.id=weibocomment.id WHERE blog.id= ?;";
         ps = conn.prepareStatement ( sql );
         ps.setInt ( 1, id );
         rs = ps.executeQuery ();

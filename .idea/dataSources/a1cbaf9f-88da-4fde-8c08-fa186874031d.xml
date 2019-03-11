@@ -1309,250 +1309,290 @@
     <table id="327" parent="3" name="blog">
       <Comment>用户发表的文章</Comment>
     </table>
-    <routine id="328" parent="3" name="add_user">
+    <table id="328" parent="3" name="weibocomment">
+      <Comment>评论表</Comment>
+      <Collation>utf8mb4_general_ci</Collation>
+    </table>
+    <routine id="329" parent="3" name="add_user">
       <RoutineKind>procedure</RoutineKind>
     </routine>
-    <routine id="329" parent="3" name="del">
+    <routine id="330" parent="3" name="del">
       <SourceTextLength>51</SourceTextLength>
       <RoutineKind>procedure</RoutineKind>
     </routine>
-    <routine id="330" parent="3" name="ls">
+    <routine id="331" parent="3" name="ls">
       <RoutineKind>procedure</RoutineKind>
     </routine>
-    <routine id="331" parent="3" name="re_serial">
+    <routine id="332" parent="3" name="re_serial">
       <RoutineKind>procedure</RoutineKind>
     </routine>
-    <routine id="332" parent="3" name="refer">
+    <routine id="333" parent="3" name="refer">
       <SourceTextLength>78</SourceTextLength>
       <RoutineKind>procedure</RoutineKind>
     </routine>
-    <routine id="333" parent="3" name="trans">
+    <routine id="334" parent="3" name="trans">
       <SourceTextLength>147</SourceTextLength>
       <RoutineKind>procedure</RoutineKind>
     </routine>
-    <column id="334" parent="326" name="id">
+    <column id="335" parent="326" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="335" parent="326" name="nickName">
+    <column id="336" parent="326" name="nickName">
       <Position>2</Position>
       <DataType>varchar(10)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="336" parent="326" name="userName">
+    <column id="337" parent="326" name="userName">
       <Position>3</Position>
       <DataType>varchar(10)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="337" parent="326" name="password">
+    <column id="338" parent="326" name="password">
       <Position>4</Position>
       <DataType>varchar(16)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="338" parent="326" name="sex">
+    <column id="339" parent="326" name="sex">
       <Position>5</Position>
       <DataType>varchar(5)|0s</DataType>
       <DefaultExpression>&apos;保密&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="339" parent="326" name="birthday">
+    <column id="340" parent="326" name="birthday">
       <Position>6</Position>
       <DataType>varchar(10)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="340" parent="326" name="autograph">
+    <column id="341" parent="326" name="autograph">
       <Position>7</Position>
       <DataType>varchar(30)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="341" parent="326" name="registerTime">
+    <column id="342" parent="326" name="registerTime">
       <Position>8</Position>
       <DataType>varchar(10)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="342" parent="326" name="qq">
+    <column id="343" parent="326" name="qq">
       <Position>9</Position>
       <DataType>varchar(15)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="343" parent="326" name="graduateFrom">
+    <column id="344" parent="326" name="graduateFrom">
       <Position>10</Position>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="344" parent="326" name="tags">
+    <column id="345" parent="326" name="tags">
       <Position>11</Position>
       <DataType>varchar(30)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="345" parent="326" name="favorite">
+    <column id="346" parent="326" name="favorite">
       <Position>12</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="346" parent="326" name="email">
+    <column id="347" parent="326" name="email">
       <Position>13</Position>
       <DataType>varchar(30)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="347" parent="326" name="place">
+    <column id="348" parent="326" name="place">
       <Position>14</Position>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="348" parent="326" name="image">
+    <column id="349" parent="326" name="image">
       <Position>15</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="349" parent="326" name="shareBlog">
+    <column id="350" parent="326" name="shareBlog">
       <Position>16</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="350" parent="326" name="UsersInformation_email_uindex">
+    <index id="351" parent="326" name="UsersInformation_email_uindex">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="351" parent="326" name="PRIMARY">
+    <key id="352" parent="326" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="352" parent="326" name="UsersInformation_email_uindex">
+    <key id="353" parent="326" name="UsersInformation_email_uindex">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>UsersInformation_email_uindex</UnderlyingIndexName>
     </key>
-    <column id="353" parent="327" name="id">
+    <column id="354" parent="327" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="354" parent="327" name="u_id">
+    <column id="355" parent="327" name="u_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="355" parent="327" name="userName">
+    <column id="356" parent="327" name="userName">
       <Position>3</Position>
       <DataType>varchar(16)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="356" parent="327" name="content">
+    <column id="357" parent="327" name="content">
       <Position>4</Position>
       <DataType>mediumtext|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="357" parent="327" name="blogTime">
+    <column id="358" parent="327" name="blogTime">
       <Position>5</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>curtime()</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="358" parent="327" name="great">
+    <column id="359" parent="327" name="great">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="359" parent="327" name="share">
+    <column id="360" parent="327" name="share">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="360" parent="327" name="greatPerson">
+    <column id="361" parent="327" name="greatPerson">
       <Position>8</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="361" parent="327" name="sharePerson">
+    <column id="362" parent="327" name="sharePerson">
       <Position>9</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="362" parent="327" name="comment">
+    <column id="363" parent="327" name="comment">
       <Position>10</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="363" parent="327" name="image">
+    <column id="364" parent="327" name="image">
       <Position>11</Position>
       <DataType>text|0s</DataType>
       <DefaultExpression>&apos;#&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="364" parent="327" name="title">
+    <column id="365" parent="327" name="title">
       <Position>12</Position>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="365" parent="327" name="origin">
+    <column id="366" parent="327" name="origin">
       <Position>13</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="366" parent="327" name="PRIMARY">
+    <key id="367" parent="327" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <argument id="367" parent="328" name="name">
+    <column id="368" parent="328" name="cid">
+      <Position>1</Position>
+      <DataType>bigint(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="369" parent="328" name="u_id">
+      <Position>2</Position>
+      <DataType>bigint(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="370" parent="328" name="userName">
+      <Position>3</Position>
+      <DataType>varchar(16)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="371" parent="328" name="id">
+      <Position>4</Position>
+      <DataType>bigint(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="372" parent="328" name="comment">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="373" parent="328" name="createTime">
+      <Position>6</Position>
+      <DataType>datetime|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="374" parent="328" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>cid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <argument id="375" parent="329" name="name">
       <Position>1</Position>
       <DataType>varchar(10)|0s</DataType>
     </argument>
-    <argument id="368" parent="328" name="password">
+    <argument id="376" parent="329" name="password">
       <Position>2</Position>
       <DataType>varchar(16)|0s</DataType>
     </argument>
-    <argument id="369" parent="329" name="p_id">
+    <argument id="377" parent="330" name="p_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
     </argument>
-    <argument id="370" parent="331" name="id">
+    <argument id="378" parent="332" name="id">
       <Position>1</Position>
       <DataType>char(4)|0s</DataType>
     </argument>
-    <argument id="371" parent="331" name="operation">
+    <argument id="379" parent="332" name="operation">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
     </argument>
-    <argument id="372" parent="332" name="pid">
+    <argument id="380" parent="333" name="pid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
     </argument>
-    <argument id="373" parent="332" name="name">
+    <argument id="381" parent="333" name="name">
       <Position>2</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>char(1)|0s</DataType>
     </argument>
-    <argument id="374" parent="332" name="money">
+    <argument id="382" parent="333" name="money">
       <Position>3</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>char(1)|0s</DataType>
     </argument>
-    <argument id="375" parent="333" name="id0">
+    <argument id="383" parent="334" name="id0">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
     </argument>
-    <argument id="376" parent="333" name="id1">
+    <argument id="384" parent="334" name="id1">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
     </argument>
-    <argument id="377" parent="333" name="transMoney">
+    <argument id="385" parent="334" name="transMoney">
       <Position>3</Position>
       <DataType>double|0s</DataType>
     </argument>

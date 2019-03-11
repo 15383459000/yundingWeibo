@@ -1,8 +1,5 @@
 package entity;
 
-
-import com.mysql.cj.x.protobuf.MysqlxDatatypes;
-
 public class Comment {
 
     //评论类的表
