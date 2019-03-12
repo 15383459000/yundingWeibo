@@ -1391,11 +1391,13 @@
     <column id="345" parent="326" name="tags">
       <Position>11</Position>
       <DataType>varchar(30)|0s</DataType>
+      <DefaultExpression>&apos;#&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="346" parent="326" name="favorite">
       <Position>12</Position>
       <DataType>text|0s</DataType>
+      <DefaultExpression>&apos;#&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="347" parent="326" name="email">

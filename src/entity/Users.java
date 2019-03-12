@@ -28,6 +28,7 @@ public class Users {
     private String[] favorite;
     private Blog blog;
     private String email;
+    private String image;
 
     /**
      * 数组转化为字符串以 # 号隔开
@@ -42,6 +43,14 @@ public class Users {
             result = tmp;
         }
         return result;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
     public String[] getImages() {
         return images;

@@ -40,7 +40,7 @@ public class Comment extends HttpServlet {
         //判断是否为"获得评论"功能
         if (commentS.getAction () != null) {
             this.action = commentS.getAction ();
-            if (action == "returnComment") {
+            if (action.equals ( "returnComment" )) {
                 String json = null;
                 try {
                     //这里输入的是微博文章的id
@@ -53,7 +53,7 @@ public class Comment extends HttpServlet {
                 out.close ();
             }
             //判断是否为"添加评论"功能
-            if (action == "addComment") {
+            if (action.equals ( "addComment" )) {
                 String u_id = commentS.getComment ().getUId () + "";
                 String userName = commentS.getComment ().getUserName () + "";
                 String id = commentS.getComment ().getId () + "";

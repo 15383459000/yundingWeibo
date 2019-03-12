@@ -1,9 +1,8 @@
 package servlet;
 
 import com.google.gson.Gson;
-import dao.UsersinformationDao;
+import dao.UsersInformation;
 import entity.Users;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,11 +18,11 @@ import java.nio.charset.StandardCharsets;
 /**
  * 通过用户id获取用户信息
  */
-@WebServlet(name = "UsersinformationServlet")
+@WebServlet(name = "UsersinformationServlet", urlPatterns = "/servlet/UserinfomationServlet")
 public class UsersinformationServlet extends HttpServlet {
 
     //实例化用户工具
-    UsersinformationDao usersinformationDao = new UsersinformationDao ();
+    UsersInformation usersinformationDao = new UsersInformation ();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

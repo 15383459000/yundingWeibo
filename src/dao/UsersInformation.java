@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class UsersinformationDao {
+public class UsersInformation {
     /**
      * 向服务器请求用户的id，返回用户的所有个人信息
      * json={"id":"?"}
@@ -26,31 +26,31 @@ public class UsersinformationDao {
             stmt = conn.prepareStatement ( sql );
             stmt.setInt ( 1, Integer.valueOf ( id ) );
             rs = stmt.executeQuery ();
-            Users usersinformation = new Users ();
+            Users UsersInformation = new Users ();
             while (rs.next ()) {
-                usersinformation.setId ( Integer.valueOf ( rs.getString ( "id" ) ) );
-                usersinformation.setNickName ( rs.getString ( "nickName" ) );
-                usersinformation.setUserName ( rs.getString ( "userName" ) );
-                usersinformation.setPassword ( rs.getString ( "password" ) );
-                usersinformation.setSex ( rs.getString ( "sex" ) );
-                usersinformation.setBirthday ( rs.getString ( "birthday" ) );
-                usersinformation.setAutograph ( rs.getString ( "autograph" ) );
-                usersinformation.setRegisterTime ( rs.getString ( "registerTime" ) );
-                usersinformation.setQq ( rs.getString ( "qq" ) );
-                usersinformation.setGraduateFrom ( rs.getString ( "graduateFrom" ) );
-                usersinformation.setTags ( rs.getString ( "tags" ).split ( "#" ) );
-                usersinformation.setEmail ( rs.getString ( "email" ) );
-                usersinformation.setPlace ( rs.getString ( "place" ) );
-                usersinformation.setImages ( rs.getString ( "image" ).split ( "#" ) );
+                UsersInformation.setId ( Integer.valueOf ( rs.getString ( "id" ) ) );
+                UsersInformation.setNickName ( rs.getString ( "nickName" ) );
+                UsersInformation.setUserName ( rs.getString ( "userName" ) );
+                UsersInformation.setPassword ( rs.getString ( "password" ) );
+                UsersInformation.setSex ( rs.getString ( "sex" ) );
+                UsersInformation.setBirthday ( rs.getString ( "birthday" ) );
+                UsersInformation.setAutograph ( rs.getString ( "autograph" ) );
+                UsersInformation.setRegisterTime ( rs.getString ( "registerTime" ) );
+                UsersInformation.setQq ( rs.getString ( "qq" ) );
+                UsersInformation.setGraduateFrom ( rs.getString ( "graduateFrom" ) );
+                UsersInformation.setTags ( rs.getString ( "tags" ).split ( "#" ) );
+                UsersInformation.setEmail ( rs.getString ( "email" ) );
+                UsersInformation.setPlace ( rs.getString ( "place" ) );
+                UsersInformation.setImages ( rs.getString ( "image" ).split ( "#" ) );
             }
-            return usersinformation;
+            return UsersInformation;
             // 返回Blog。
         }catch (Exception ex) {
             ex.printStackTrace ();
             return null;
         } finally {
             // 释放数据集对象
-            UsersinformationDao.re ( stmt, rs );
+            UsersInformation.re ( stmt, rs );
         }
     }
 
@@ -81,87 +81,87 @@ public class UsersinformationDao {
         try {
             conn = DButil.getConnection ();
             if (u.getUserName () != null) {
-                String sql = " update usersinformation  set userName=?  where id=?";
+                String sql = " update UsersInformation set userName=?  where id=?";
                 stmt = conn.prepareStatement ( sql );
                 stmt.setString ( 1, u.getUserName () );
-                stmt.setInt ( 2, Integer.valueOf ( u.getId () ) );
+                stmt.setInt ( 2, u.getId () );
                 stmt.execute ();
             }
             if (u.getAutograph () != null) {
-                String sql = " update usersinformation  set autograph=?  where id=?";
+                String sql = " update UsersInformation  set autograph=?  where id=?";
                 stmt = conn.prepareStatement ( sql );
                 stmt.setString ( 1, u.getAutograph () );
-                stmt.setInt ( 2, Integer.valueOf ( u.getId () ) );
+                stmt.setInt ( 2, u.getId () );
                 stmt.execute ();
             }
             if (u.getEmail () != null) {
-                String sql = " update usersinformation  set email=?  where id=?";
+                String sql = " update UsersInformation  set email=?  where id=?";
                 stmt = conn.prepareStatement ( sql );
                 stmt.setString ( 1, u.getEmail () );
-                stmt.setInt ( 2, Integer.valueOf ( u.getId () ) );
+                stmt.setInt ( 2, u.getId () );
                 stmt.execute ();
             }
             if (u.getGraduateFrom () != null) {
-                String sql = " update usersinformation  set graduateFrom=?  where id=?";
+                String sql = " update UsersInformation  set graduateFrom=?  where id=?";
                 stmt = conn.prepareStatement ( sql );
                 stmt.setString ( 1, u.getGraduateFrom () );
-                stmt.setInt ( 2, Integer.valueOf ( u.getId () ) );
+                stmt.setInt ( 2, u.getId () );
                 stmt.execute ();
             }
             if (u.getImages () != null) {
-                String sql = " update usersinformation  set image=?  where id=?";
+                String sql = " update UsersInformation  set image=?  where id=?";
                 stmt = conn.prepareStatement ( sql );
                 stmt.setString ( 1, Users.ArrayToString ( u.getImages () ) );
-                stmt.setInt ( 2, Integer.valueOf ( u.getId () ) );
+                stmt.setInt ( 2, u.getId () );
                 stmt.execute ();
             }
             if (u.getNickName () != null) {
-                String sql = " update usersinformation  set nickName=?  where id=?";
+                String sql = " update UsersInformation  set nickName=?  where id=?";
                 stmt = conn.prepareStatement ( sql );
                 stmt.setString ( 1, u.getNickName () );
-                stmt.setInt ( 2, Integer.valueOf ( u.getId () ) );
+                stmt.setInt ( 2, u.getId () );
                 stmt.execute ();
             }
             if (u.getPassword () != null) {
-                String sql = " update usersinformation  set password=?  where id=?";
+                String sql = " update UsersInformation  set password=?  where id=?";
                 stmt = conn.prepareStatement ( sql );
                 stmt.setString ( 1, u.getPassword () );
-                stmt.setInt ( 2, Integer.valueOf ( u.getId () ) );
+                stmt.setInt ( 2, u.getId () );
                 stmt.execute ();
             }
             if (u.getPlace () != null) {
-                String sql = " update usersinformation  set place=?  where id=?";
+                String sql = " update UsersInformation  set place=?  where id=?";
                 stmt = conn.prepareStatement ( sql );
                 stmt.setString ( 1, u.getPlace () );
-                stmt.setInt ( 2, Integer.valueOf ( u.getId () ) );
+                stmt.setInt ( 2, u.getId () );
                 stmt.execute ();
             }
             if (u.getQq () != null) {
-                String sql = " update usersinformation  set qq=?  where id=?";
+                String sql = " update UsersInformation  set qq=?  where id=?";
                 stmt = conn.prepareStatement ( sql );
                 stmt.setString ( 1, u.getQq () );
-                stmt.setInt ( 2, Integer.valueOf ( u.getId () ) );
+                stmt.setInt ( 2, u.getId () );
                 stmt.execute ();
             }
             if (u.getSex () != null) {
-                String sql = " update usersinformation  set sex=?  where id=?";
+                String sql = " update UsersInformation  set sex=?  where id=?";
                 stmt = conn.prepareStatement ( sql );
                 stmt.setString ( 1, u.getSex () );
-                stmt.setInt ( 2, Integer.valueOf ( u.getId () ) );
+                stmt.setInt ( 2, u.getId () );
                 stmt.execute ();
             }
             if (u.getTags () != null) {
-                String sql = " update usersinformation  set tags=?  where id=?";
+                String sql = " update UsersInformation  set tags=?  where id=?";
                 stmt = conn.prepareStatement ( sql );
                 stmt.setString ( 1, Users.ArrayToString ( u.getTags () ) );
-                stmt.setInt ( 2, Integer.valueOf ( u.getId () ) );
+                stmt.setInt ( 2, u.getId () );
                 stmt.execute ();
             }
             if (u.getBirthday () != null) {
-                String sql = " update usersinformation  set birthday=?  where id=?";
+                String sql = " update UsersInformation  set birthday=?  where id=?";
                 stmt = conn.prepareStatement ( sql );
                 stmt.setString ( 1, u.getBirthday () );
-                stmt.setInt ( 2, Integer.valueOf ( u.getId () ) );
+                stmt.setInt ( 2, u.getId () );
                 stmt.execute ();
             }
 

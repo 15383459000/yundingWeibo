@@ -509,10 +509,23 @@ public class BlogDao {
         Connection conn = DButil.getConnection ();
         StringBuilder sb = new StringBuilder ();
         final String great = "great";
-        if (v.equals ( great )) {
-            sb.append ( "select * from blog order by great desc" );
-        } else {
-            sb.append ( "select * from blog order by share desc" );
+//        if (v.equals ( great )) {
+//            sb.append ( "select * from blog order by great desc" );
+//        } else {
+//            sb.append ( "select * from blog order by share desc" );
+//        }
+        switch (v) {
+            case "great": {
+                sb.append ( "select * from blog order by great desc limit 10" );
+                break;
+            }
+            case "share": {
+                sb.append ( "select * from blog order by share desc limit 10" );
+                break;
+            }
+            default: {
+                sb.append ( "select * from blog order by id desc limit 10" );
+            }
         }
 
         PreparedStatement ptmt = conn.prepareStatement ( sb.toString () );
@@ -522,11 +535,6 @@ public class BlogDao {
 
         return BlogDao.resultSetToBlog ( rs );
     }
-
-    /**
-     * 根据分享排行
-     */
-
 
     /**
      * 清空语句和结果集缓存
