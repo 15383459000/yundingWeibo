@@ -10,7 +10,7 @@ import java.sql.*;
 public class DButil {
     //todo 修改为正确的数据库
 
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/test";
+    private static final String URL = "jdbc:mysql://47.93.8.69 :3306/yundingWeibo";
     private static final String USER = "root";
     private static final String PASSWORD = "wenzhu27";
 
