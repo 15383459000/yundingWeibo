@@ -10,7 +10,7 @@
  *
  * 返回 status:"value"
  * value = -1 没有此用户，0登录失败，1登陆成功
- *
+ * 登陆成功返回userId
  * @author guohaodong
  */
  ```
@@ -37,7 +37,6 @@
  *
  * IN 验证码json
  *  code    验证码
-    identify 正确的验证码
  *
  * IN 动作
  *  action  行为 register forgetPwd"
