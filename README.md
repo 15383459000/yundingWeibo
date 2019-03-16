@@ -485,6 +485,44 @@ OUT json
 };
 ```
 
+# /servlet/ChartsTime
+
+* 按时间排序
+
+OUT json
+
+```html
+[
+    {
+        "id": 2,
+        "u_id": 2,
+        "userName": "",
+        "origin": 2,
+        "content": "fsagf",
+        "blogTime": "2019-03-16",
+        "great": 0,
+        "share": 0,
+        "images": [
+            
+        ]
+    },
+    {
+        "id": 1,
+        "u_id": 1,
+        "userName": "",
+        "origin": 1,
+        "content": "dfrffr",
+        "blogTime": "2019-03-16",
+        "great": 0,
+        "share": 0,
+        "images": [
+            
+        ]
+    }
+]
+```
+
+
 
 
 
