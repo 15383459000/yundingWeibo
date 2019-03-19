@@ -28,6 +28,15 @@ public class Users {
     private String[] favorite;
     private Blog blog;
     private String email;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     private String image;
 
     /**
@@ -44,25 +53,6 @@ public class Users {
         }
         return result;
     }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-    public String[] getImages() {
-        return images;
-    }
-
-    public void setImages(String[] images) {
-        this.images = images;
-    }
-
-    private String[] images;
-
-
 //    构造方法
 
 

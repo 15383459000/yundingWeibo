@@ -41,7 +41,7 @@ public class UsersInformation {
                 UsersInformation.setTags ( rs.getString ( "tags" ).split ( "#" ) );
                 UsersInformation.setEmail ( rs.getString ( "email" ) );
                 UsersInformation.setPlace ( rs.getString ( "place" ) );
-                UsersInformation.setImages ( rs.getString ( "image" ).split ( "#" ) );
+                UsersInformation.setImage(rs.getString("image"));
             }
             return UsersInformation;
             // 返回Blog。
@@ -108,10 +108,10 @@ public class UsersInformation {
                 stmt.setInt ( 2, u.getId () );
                 stmt.execute ();
             }
-            if (u.getImages () != null) {
+            if (u.getImage() != null) {
                 String sql = " update UsersInformation  set image=?  where id=?";
                 stmt = conn.prepareStatement ( sql );
-                stmt.setString ( 1, Users.ArrayToString ( u.getImages () ) );
+                stmt.setString(1, u.getImage());
                 stmt.setInt ( 2, u.getId () );
                 stmt.execute ();
             }
