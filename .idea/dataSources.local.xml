@@ -2,7 +2,7 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="test@localhost" uuid="a1cbaf9f-88da-4fde-8c08-fa186874031d">
-      <database-info product="MySQL" version="5.5.5-10.3.12-MariaDB" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )" dbms="MYSQL" exact-version="10.3.12" exact-driver-version="5.1">
+      <database-info product="MySQL" version="5.5.5-10.3.13-MariaDB" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )" dbms="MYSQL" exact-version="10.3.13" exact-driver-version="5.1">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
@@ -10,8 +10,8 @@
       <secret-storage>master_key</secret-storage>
       <introspection-schemas>*:@</introspection-schemas>
     </data-source>
-    <data-source name="jdbc:mysql://47.93.8.69 :3306/yundingWeibo" uuid="b5091cf1-b446-4802-9e76-785a4f47a815">
-      <database-info product="MySQL" version="5.5.60-MariaDB" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )" dbms="MARIADB" exact-version="5.5.60" exact-driver-version="5.1">
+    <data-source name="yundingWeibo@47.93.8.69" uuid="c9b60ee2-6b29-486b-9434-015446dc5fb0">
+      <database-info product="MySQL" version="5.5.5-10.3.13-MariaDB" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )" dbms="MARIADB" exact-version="10.3.13" exact-driver-version="5.1">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>

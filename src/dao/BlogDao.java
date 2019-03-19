@@ -45,46 +45,6 @@ public class BlogDao {
         }
     }
 
-    /**
-     * 通过文章id来获取文章
-     *
-     * @param id 文章id
-     * @return blog
-     */
-    /*private Blog getBlogById(int id) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        try {
-            conn = DButil.getConnection();
-            // SQL语句
-            String sql = "select * from blog where id=?;";
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, id);
-            rs = stmt.executeQuery ();
-            Blog blog = new Blog();
-            while (rs.next ()) {
-                blog.setId ( rs.getInt ( "id" ) );
-                blog.setU_id ( rs.getInt ( "u_id" ) );
-                blog.setContent ( rs.getString ( "content" ).toString () );
-                blog.setBlogTime ( rs.getString("blogTime"));
-                blog.setGreat(rs.getInt("great"));
-                blog.setShare(rs.getInt("share"));
-                blog.setUserName(rs.getString( "userName" ) );
-                if (rs.getString ( "image" ) != null) {
-                    blog.setImages ( rs.getString ( "image" ).split ( "#" ) );
-                }
-            }
-            return blog;
-            // 返回Blog。
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
-        } finally {
-            // 释放数据集对象
-            BlogDao.re(stmt, rs);
-        }
-    }*/
 
     /**
      * 通过用户id来获取该用户收藏
@@ -508,7 +468,6 @@ public class BlogDao {
     public List<Blog> getCharts(String v) throws SQLException, ClassNotFoundException {
         Connection conn = DButil.getConnection ();
         StringBuilder sb = new StringBuilder ();
-        final String great = "great";
 //        if (v.equals ( great )) {
 //            sb.append ( "select * from blog order by great desc" );
 //        } else {

@@ -16,15 +16,45 @@
                 // var userEmail = $("#userEmail").val();
                 // var password = $("#password").val();
 
-                var testUrl = "servlet/IsLogIn";
+                var testUrl = "servlet/Comment";
+                var json = {
+                    action: "addComment",
+                    comment: {
+                        "u_id": "3",
+                        "userName": "中文"
+                        "id": "2",
+                        "comment": "falkdf;la"
+                    }
+                };
+                $.ajax({
+                    "url": testUrl,
+                    "type":"post",
+                    "dataType":"json",
+                    "data":JSON.stringify(json),
+                    "success":function(date){
+                        var string = JSON.stringify(date);
+                        // alert(string);
+                        $("#out").text(string);
+
+                    },
+                    "error":function () {
+                        alert("connection load failure");
+                    }
+                });
+            })
+        })
+    </script>
+    <script>
+        $(function () {
+            $("#register").click(function () {
+                // var userEmail = $("#userEmail").val();
+                // var password = $("#password").val();
+
+                var testUrl = "servlet/Register";
                 var json =
                     {
-                        "action": "addBlog",
-                        "blog": {
-                            "u_id": "123",
-                            "userName": "fairy",
-                            "content": "I love programmer"
-                        }
+                        "email":"1079407476@qq.com",
+                        "password":"123456"
                     };
                 $.ajax({
                     "url": testUrl,
@@ -54,6 +84,7 @@
 </form>
 <p>
     <button type="submit" id="Upload">test</button>
+    <button type="submit" id="register">register</button>
     <span id="out"></span></p>
 
 </body>

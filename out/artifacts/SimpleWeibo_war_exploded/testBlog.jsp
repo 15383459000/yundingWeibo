@@ -19,11 +19,13 @@
                 var testUrl = "servlet/Comment";
                 var json =
                     {
-                        action:"addComment",
-                        comment:{"u_id": "3",       //添加评论: 用户的id:u_id , 用户的姓名:userName , 微博的id:id , 想要添加的评论:comment .
-                        "userName": "顺风车",
-                        "id":"2",
-                        "comment": "双方三四次"}
+                        action: "addComment",
+                        comment: {
+                            "u_id": "3",       //添加评论: 用户的id:u_id , 用户的姓名:userName , 微博的id:id , 想要添加的评论:comment .
+                            "userName": "顺风车",
+                            "id": "2",
+                            "comment": "双方三四次"
+                        }
                         // "id":"1"      //根据微博名查询评论: 微博表的id
                     };
                 $.ajax({

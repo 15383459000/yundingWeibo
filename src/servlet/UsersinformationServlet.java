@@ -21,7 +21,6 @@ import java.nio.charset.StandardCharsets;
 @WebServlet(name = "UsersinformationServlet", urlPatterns = "/servlet/UserinfomationServlet")
 public class UsersinformationServlet extends HttpServlet {
 
-    //实例化用户工具
     UsersInformation usersinformationDao = new UsersInformation ();
 
     @Override

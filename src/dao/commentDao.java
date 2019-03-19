@@ -32,22 +32,22 @@ public class commentDao {
 
         stmt = conn.createStatement ();
         int lastId = 0;
-        String sql = "SELECT * FROM weibocomment ";
-        rs = stmt.executeQuery ( sql );
-        //找到最后一行
-        while (rs.next ()) {
-            lastId++;
-        }
-        Timestamp date = new Timestamp ( new java.util.Date ().getTime () );
+//        String sql = "SELECT * FROM weibocomment ";
+//        rs = stmt.executeQuery ( sql );
+//        //找到最后一行
+//        while (rs.next ()) {
+//            lastId++;
+//        }
+//        Timestamp date = new Timestamp ( new java.util.Date ().getTime () );
         //添加评论
-        String sqled = "INSERT INTO weibocomment (cid, u_id, userName,id,comment, createTime) VALUES (" + (lastId + 1) + ", ?, ?, ?, ?, ?);";
+        String sqled = "INSERT INTO weibocomment ( u_id, userName,id,comment) VALUES ( ?, ?, ?, ?);";
         ps = conn.prepareStatement ( sqled );
         //依次输入各项参数
         ps.setString ( 1, u_Id );
         ps.setString ( 2, userName );
         ps.setString ( 3, id );
         ps.setString ( 4, comment );
-        ps.setTimestamp ( 5, date );
+//        ps.setTimestamp ( 5, date );
         ps.execute ();
     }
 

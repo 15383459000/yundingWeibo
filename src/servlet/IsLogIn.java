@@ -4,14 +4,10 @@ import com.google.gson.Gson;
 import entity.Users;
 import util.Json;
 import dao.UserUtil;
-
-import javax.jms.Session;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -30,7 +26,7 @@ import java.sql.SQLException;
 @WebServlet(name = "IsLogIn", urlPatterns = "/servlet/IsLogIn")
 public class IsLogIn extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         doPost ( req, resp );
     }
 

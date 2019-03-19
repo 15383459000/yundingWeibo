@@ -6,6 +6,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="SimpleWeibo" />
+          <element id="library" level="project" name="apache-tomcat-9.0" />
         </element>
         <element id="directory" name="lib">
           <element id="file-copy" path="$PROJECT_DIR$/lib/mysql-connector-java-8.0.15.jar" />
@@ -15,6 +16,7 @@
           <element id="file-copy" path="$USER_HOME$/Sync-manjaro/JAR/activation-1.1.1.jar" />
           <element id="file-copy" path="$USER_HOME$/Sync-manjaro/JAR/commons-io-2.6.jar" />
           <element id="file-copy" path="$USER_HOME$/Sync-manjaro/JAR/commons-fileupload-1.4.jar" />
+          <element id="library" level="project" name="lib" />
         </element>
       </element>
     </root>

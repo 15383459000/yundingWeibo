@@ -1,11 +1,5 @@
 package entity;
 
-import dao.UserUtil;
-
-import java.sql.Clob;
-import java.sql.Date;
-import java.sql.SQLException;
-
 public class Blog {
     private int id;
     private int u_id;

@@ -5,6 +5,7 @@ import util.Json;
 import util.Mailet;
 
 import javax.mail.MessagingException;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +32,7 @@ public class GetIdentifyingCode extends HttpServlet {
      * @throws IOException
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 //        设置编码格式
         request.setCharacterEncoding ( "utf-8" );
         response.setContentType ( "json" );
@@ -53,10 +54,8 @@ public class GetIdentifyingCode extends HttpServlet {
             e.printStackTrace ();
         }finally {
 //            将验证码传输到前端
-            PrintWriter printWriter = response.getWriter ();
-            printWriter.print ( "{\"identify\":\""+identify+"\"}" );
-            printWriter.flush ();
-            printWriter.close ();
+            ServletContext servletContext = request.getServletContext();
+            servletContext.setAttribute("identify", identify);
         }
 
     }

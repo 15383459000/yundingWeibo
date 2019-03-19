@@ -68,11 +68,10 @@ public class Register extends HttpServlet {
 
 //        获取 正确的验证码identify,用户提交的验证码code,用户的行为action
         BlogS blogs = gson.fromJson ( json, BlogS.class );
-        String identify = blogs.getIdentify ();
+        String identify = request.getServletContext().getAttribute("identify").toString();
         String code = blogs.getCode ();
         String action = blogs.getAction ();
-        //todo 调试完成后删除
-        if (false) {
+        if (!identify.equals(code)) {
 //        if(!code.equals ( identify )){
 //            验证码错误 0
             out.print ( "{\"status\":\"0\"}" );
@@ -106,11 +105,7 @@ public class Register extends HttpServlet {
                 out.flush ();
                 out.close ();
             }
-//            request.getSession ().removeAttribute ( "identify" );
-
         }
-
-
     }
 
 }
