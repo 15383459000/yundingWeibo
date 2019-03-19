@@ -21,23 +21,23 @@
                     action: "addComment",
                     comment: {
                         "u_id": "3",
-                        "userName": "中文"
+                        "userName": "中文",
                         "id": "2",
                         "comment": "falkdf;la"
                     }
                 };
                 $.ajax({
                     "url": testUrl,
-                    "type":"post",
-                    "dataType":"json",
-                    "data":JSON.stringify(json),
-                    "success":function(date){
+                    "type": "post",
+                    "dataType": "json",
+                    "data": JSON.stringify(json),
+                    "success": function (date) {
                         var string = JSON.stringify(date);
                         // alert(string);
                         $("#out").text(string);
 
                     },
-                    "error":function () {
+                    "error": function () {
                         alert("connection load failure");
                     }
                 });
@@ -53,8 +53,8 @@
                 var testUrl = "servlet/Register";
                 var json =
                     {
-                        "email":"1079407476@qq.com",
-                        "password":"123456"
+                        "email": "1079407476@qq.com",
+                        "password": "123456"
                     };
                 $.ajax({
                     "url": testUrl,

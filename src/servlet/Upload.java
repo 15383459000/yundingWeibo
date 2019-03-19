@@ -60,10 +60,10 @@ public class Upload extends HttpServlet {
             for (FileItem fileItem : list) {
 
                 //如果是普通输入项
-                if (fileItem.isFormField ()) {
-                    return null;
-                } else {
+//                if (fileItem.isFormField ()) {
+//                } else {
 
+                if (!fileItem.isFormField()) {
                     //如果是上传文件
 
                     //得到上传名称
@@ -74,7 +74,7 @@ public class Upload extends HttpServlet {
                     InputStream inputStream = fileItem.getInputStream ();
 
                     //得到项目的路径，把上传文件写到项目中
-                    String path = this.getServletContext ().getRealPath ( "/WEB-INF/uploadFile" );
+                    String path = this.getServletContext().getRealPath("/uploadFile");
 
                     //得到分散后的目录路径
                     String realPath = makeDirPath ( fileName, path );
@@ -92,14 +92,14 @@ public class Upload extends HttpServlet {
 
                     //删除临时文件的数据
                     fileItem.delete ();
-
+                    realPath = realPath.substring(realPath.indexOf("uploadFile"));
                     paths.add ( realPath + SPLIT + fileName );
 
                 }
             }
             return paths;
         }catch (FileUploadException | IOException ignore) {
-
+            ignore.printStackTrace();
         }
         return null;
     }
@@ -120,13 +120,12 @@ public class Upload extends HttpServlet {
 
         String dir = path + SPLIT + dir1 + SPLIT + dir2;
 
-/*        //如果该目录不存在，就创建目录
+        //如果该目录不存在，就创建目录
         File file = new File(dir);
         if (!file.exists()) {
 
-//            file.mkdirs();//返回全路径
+            file.mkdirs();//返回全路径
         }
-        */
         return dir;
 
     }
