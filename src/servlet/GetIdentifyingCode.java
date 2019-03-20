@@ -55,6 +55,7 @@ public class GetIdentifyingCode extends HttpServlet {
         }finally {
 //            将验证码传输到前端
             ServletContext servletContext = request.getServletContext();
+            servletContext.removeAttribute("identify");
             servletContext.setAttribute("identify", identify);
         }
 

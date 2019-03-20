@@ -48,8 +48,8 @@ public class Users {
     public static String ArrayToString(String[] param) {
         String result = "";
         for (String tmp : param) {
-            tmp += param;
-            result = tmp;
+            StringBuilder stringBuilder = new StringBuilder(tmp);
+            result = stringBuilder.append(param).toString();
         }
         return result;
     }

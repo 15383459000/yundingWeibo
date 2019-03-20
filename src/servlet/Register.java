@@ -82,6 +82,7 @@ public class Register extends HttpServlet {
 
 //            验证成功，在数据库中添加用户
 //            创建用户对象
+            request.getServletContext().removeAttribute("identify");
             Users user = blogs.getUsers ();
 
             try {

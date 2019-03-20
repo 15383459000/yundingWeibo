@@ -1,0 +1,79 @@
+查看当前路径	pwd
+删除vmware	sudo vmware-installer --uninstall-product vmware-workstation
+使虚拟机有ip
+vi /etc/sysconfig/network-scrips/ifcfg-xx
+service network restart
+yum install net-tools
+虚拟机使用桥接
+ssh
+安装ssh		yum install openssh-server
+启动ssh		service sshd start
+开机自启动	chkconfig sshd on
+查看进程	ps -ef |grep 
+连接服务器	ssh usernamr@ipaddr
+退出服务器	exit
+创建文件	touch
+~/.ssh/config	
+	#ssh默认22port
+	host			别名
+	hostname 	主机ip
+	port			22
+	user		root
+*配置ssh-config可以使用ssh 别名	登录
+ssh免密登录(ssh-key)
+	私钥存放位置～/.ssh
+	公钥存放位置服务器的～/.ssh/authorized_keys
+	linux生成ssh-key
+		ssh-keygen -t rsa
+		ssh-keygen -t dsa
+	*linux
+		ssh-add ~/.ssh/私钥名
+修改ssh端口
+	vim /etc/ssh/sshd_config
+	service sshd restart
+
+查看本机资源
+	free -h		内存
+	df -h 		硬盘
+	w		负载
+	cat proc/cpuinfo	查看cpu
+文件操作命令
+	cp	rm	mv
+vim
+	gg	行首（铅直最高）G	行尾
+	u 	撤销
+ls -al	查看所有信息
+tail 从尾部读
+head 从头部读
+cat  整个文件
+more 分页读
+less 可控分页
+grep -n"参数"	寻找参数 （-n显示行）
+wc -l 显示行数
+find 查找	//find path (.当前目录) -name（-type(f文件d文件夹)） 正则表达式
+
+防火墙
+
+安装	yum install firewalld
+启动	service firewalld start
+检查状态	service firewalld status
+关闭/禁用防火墙	service firewalld stop/disable
+
+查看当前防火墙状态	firewall-cmd --state
+firewall-cmd --list-all-zones
+	     --query-service=ssh	//查看对服务的支持
+	     --add-service=ssh
+	     --remove-service=ssh
+scp 文件名 路径		username@ipaddr
+
+用户操作
+	useradd	添加用户		-g分配组
+	userdel	删除账户		-r递归
+	usermod	更改用户参数
+	users	查看当前登录用户
+apache 
+	安装	yum install httpd
+	启动	service httpd start
+	停止	service httpd stop
+ps -ef 查看进程
+grep (正则表达式)	用于筛选
