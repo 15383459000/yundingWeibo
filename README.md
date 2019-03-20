@@ -296,7 +296,7 @@ json
 {
     "action": "delete",
     "blog": {
-        "b_id": " ?"
+        "id": ""
     }
 };
 ```
@@ -398,7 +398,7 @@ OUT json
     "status": "1"
 }
 ```
-# /servlet/comments
+# /servlet/Comment
 
 json
 
