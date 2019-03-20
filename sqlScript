@@ -1,0 +1,44 @@
+-- auto-generated definition
+create table UsersInformation
+(
+  id           int auto_increment
+    primary key,
+  nickName     varchar(10)             null,
+  userName     varchar(10)             null,
+  password     varchar(16)             not null,
+  sex          varchar(5) default '保密' null,
+  birthday     varchar(10)             null,
+  autograph    varchar(30)             null,
+  registerTime varchar(10)             null,
+  qq           varchar(15)             null,
+  graduateFrom varchar(20)             null,
+  tags         varchar(30)             null,
+  favorite     text                    null,
+  email        varchar(30)             null,
+  place        varchar(20)             null,
+  image        text                    null,
+  constraint UsersInformation_email_uindex
+    unique (email)
+)
+  comment '用户信息';
+
+-- auto-generated definition
+create table blog
+(
+  id          int auto_increment
+    primary key,
+  u_id        int                        not null,
+  userName    varchar(16)                not null,
+  content     mediumtext                 not null,
+  blogTime    datetime default curtime() not null,
+  great       int      default 0         null,
+  share       int      default 0         not null,
+  greatPerson text                       null,
+  sharePerson text                       null,
+  comment     text                       null,
+  image       text                       null,
+  title       varchar(20)                null,
+  origin      int                        not null
+)
+  comment '用户发表的文章';
+
