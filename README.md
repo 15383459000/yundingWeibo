@@ -455,7 +455,7 @@ json
 	"birthday": "haha"
 };
 ```
-
+# /servlet/UserInformation
 * 获取用户信息
 
 json
