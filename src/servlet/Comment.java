@@ -44,7 +44,7 @@ public class Comment extends HttpServlet {
                 String json = null;
                 try {
                     //这里输入的是微博文章的id
-                    json = gs.toJson ( cd.getAllCommentById ( bl.getId () ) );
+                    json = gs.toJson(cd.getAllCommentById(commentS.getComment().getId()));
                 }catch (SQLException e) {
                     e.printStackTrace ();
                 }

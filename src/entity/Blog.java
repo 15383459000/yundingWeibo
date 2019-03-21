@@ -12,7 +12,7 @@ public class Blog {
     private String greatPerson;
     private String sharePerson;
     private String comment;
-    private String[] images;
+    private String[] images = {"#"};
     private String title;
 
     public Blog(){}

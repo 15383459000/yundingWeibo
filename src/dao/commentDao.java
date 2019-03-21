@@ -55,7 +55,8 @@ public class commentDao {
     public ArrayList<Comment> getAllCommentById(int id) throws SQLException {
 
         ArrayList<Comment> list = new ArrayList<Comment> ();
-        String sql = "SELECT * from weibocomment left blog JOIN  on blog.id=weibocomment.id WHERE blog.id= ?;";
+//        String sql = "SELECT * from weibocomment left blog JOIN  on blog.id=weibocomment.id WHERE blog.id= ?;";
+        String sql = "SELECT * from weibocomment  WHERE id= ?;";
         ps = conn.prepareStatement ( sql );
         ps.setInt ( 1, id );
         rs = ps.executeQuery ();

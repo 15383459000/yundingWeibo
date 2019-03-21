@@ -316,7 +316,7 @@ public class BlogDao {
             try {
                 stmt.setString ( 4, imagesDao ( blog.getImages () ) );
             }catch (NullPointerException ignore) {
-                stmt.setString ( 4, null );
+                stmt.setString(4, "#");
             }
             try {
                 stmt.setString ( 5, blog.getTitle () );
@@ -532,7 +532,7 @@ public class BlogDao {
         ResultSet resultSet = preparedStatement.getResultSet ();
 
         //遍历结果集实例化blog
-        Blog blog = resultSetToBlog ( resultSet ).get ( 0 );
+        Blog blog = resultSetToBlog(resultSet).get(1);
         // 释放数据集对象
         BlogDao.re ( preparedStatement, resultSet );
 

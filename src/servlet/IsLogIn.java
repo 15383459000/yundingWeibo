@@ -53,7 +53,7 @@ public class IsLogIn extends HttpServlet {
             Users u = userUtil.getUsersByEmail ( user.getEmail () );
 
 //             当数据库有此用户，判断是否登录成功
-            if (userUtil.getUsersByEmail ( user.getEmail () ).getPassword ().equals ( u.getPassword () )) {
+            if (user.getPassword().equals(u.getPassword())) {
 //                密码正确
                 result.append ( "\"1\",\"userId\":\"" ).append ( u.getId () ).append ( "\"}" );
             } else {
