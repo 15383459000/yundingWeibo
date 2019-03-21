@@ -430,6 +430,28 @@ json
 	"action": "returnComment"
 }
 ```
+OUT json
+
+```html
+[
+    {
+        "cid": 1,
+        "u_id": 3,
+        "userName": "顺风车",
+        "id": 2,
+        "comment": "双方三四次",
+        "createTime": "Mar 12, 2019, 10:27:03 AM"
+    },
+    {
+        "cid": 2,
+        "u_id": 3,
+        "userName": "顺风车",
+        "id": 2,
+        "comment": "双方三四次",
+        "createTime": "Mar 12, 2019, 10:27:40 AM"
+    }
+]
+```
 
 
 
@@ -455,7 +477,7 @@ json
 	"birthday": "haha"
 };
 ```
-
+# /servlet/UserInformation
 * 获取用户信息
 
 json
