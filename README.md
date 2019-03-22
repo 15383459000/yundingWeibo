@@ -478,24 +478,24 @@ json
 OUT json
 
 ```html
-[
-    {
-        "cid": 1,
-        "u_id": 3,
-        "userName": "顺风车",
-        "id": 2,
-        "comment": "双方三四次",
-        "createTime": "Mar 12, 2019, 10:27:03 AM"
-    },
-    {
-        "cid": 2,
-        "u_id": 3,
-        "userName": "顺风车",
-        "id": 2,
-        "comment": "双方三四次",
-        "createTime": "Mar 12, 2019, 10:27:40 AM"
-    }
-]
+{
+    "commentList": [
+        {
+            "cid": 3,
+            "u_id": 1,
+            "userName": "顺风车",
+            "id": 5,
+            "comment": "双方三四次"
+        },
+        {
+            "cid": 7,
+            "u_id": 1,
+            "userName": "顺风车",
+            "id": 5,
+            "comment": "双方三四次"
+        }
+    ]
+}
 ```
 
 
