@@ -80,10 +80,6 @@
 {
     "email": "123@qq.com"
 }
-传出
-{
-    "identify": "000000"
-}
 ```
 
 # /servlet/BlogServlet
@@ -342,35 +338,81 @@ OUT json(great,share)
 > images title 没有值的时候是空串即 " "
 
 ```html
-[
-    {
-        "id": 5,
-        "u_id": 123,
-        "userName": "fairy",
-        "content": "I love programmer",
-        "blogTime": "2019-03-09",
-        "great": 4,
-        "share": 0,
-        "images": [
-            " "
-        ],
-        "title": " "
-    },
-    {
-        "id": 6,
-        "u_id": 123,
-        "userName": "fairy",
-        "content": "I hate programmer!!!",
-        "blogTime": "2019-03-09",
-        "great": 0,
-        "share": 0,
-        "images": [
-            "ffadfaf",
-            "fsgfsgsgshjhklj"
-        ],
-        "title": " "
-    }
-]    
+{
+    "blogList": [
+        {
+            "id": 37,
+            "u_id": 1,
+            "userName": "崔雨",
+            "origin": 1,
+            "content": "fairy i love you",
+            "blogTime": "2019-03-21",
+            "great": 0,
+            "share": 0,
+            "images": [],
+            "title": "title"
+        },
+        {
+            "id": 34,
+            "u_id": 1,
+            "userName": "fang",
+            "origin": 123,
+            "content": "I love programmer!!!",
+            "blogTime": "2019-03-20",
+            "great": 0,
+            "share": 0,
+            "images": [
+                "ffadfaf",
+                "fsgfsgsgshjhklj"
+            ],
+            "title": " "
+        },
+        {
+            "id": 30,
+            "u_id": 1,
+            "userName": "崔雨",
+            "origin": 1,
+            "content": "fairy i love you",
+            "blogTime": "2019-03-19",
+            "great": 2,
+            "share": 0,
+            "images": [
+                "1.jpg"
+            ],
+            "title": "title"
+        },
+        {
+            "id": 28,
+            "u_id": 12,
+            "userName": "yy",
+            "origin": 12,
+            "content": "fairy",
+            "blogTime": "2019-03-10",
+            "great": 0,
+            "share": 0,
+            "images": [
+                "1.jpg",
+                "2.jpg"
+            ],
+            "title": "title"
+        },
+        {
+            "id": 6,
+            "u_id": 123,
+            "userName": "fairy",
+            "origin": 123,
+            "content": "I love programmer!!!",
+            "blogTime": "2019-03-09",
+            "great": 0,
+            "share": 0,
+            "images": [
+                "ffadfaf",
+                "fsgfsgsgshjhklj"
+            ],
+            "title": " "
+        }
+    ]
+}
 ```
 
 
@@ -427,7 +469,10 @@ json
 
 ```html
 {
-	"action": "returnComment"
+    "action": "returnComment",
+    "comment": {
+        "id": "1"
+    }
 }
 ```
 OUT json
@@ -514,34 +559,81 @@ OUT json
 OUT json
 
 ```html
-[
-    {
-        "id": 2,
-        "u_id": 2,
-        "userName": "",
-        "origin": 2,
-        "content": "fsagf",
-        "blogTime": "2019-03-16",
-        "great": 0,
-        "share": 0,
-        "images": [
-            
-        ]
-    },
-    {
-        "id": 1,
-        "u_id": 1,
-        "userName": "",
-        "origin": 1,
-        "content": "dfrffr",
-        "blogTime": "2019-03-16",
-        "great": 0,
-        "share": 0,
-        "images": [
-            
-        ]
-    }
-]
+{
+    "blogList": [
+        {
+            "id": 37,
+            "u_id": 1,
+            "userName": "崔雨",
+            "origin": 1,
+            "content": "fairy i love you",
+            "blogTime": "2019-03-21",
+            "great": 0,
+            "share": 0,
+            "images": [],
+            "title": "title"
+        },
+        {
+            "id": 34,
+            "u_id": 1,
+            "userName": "fang",
+            "origin": 123,
+            "content": "I love programmer!!!",
+            "blogTime": "2019-03-20",
+            "great": 0,
+            "share": 0,
+            "images": [
+                "ffadfaf",
+                "fsgfsgsgshjhklj"
+            ],
+            "title": " "
+        },
+        {
+            "id": 30,
+            "u_id": 1,
+            "userName": "崔雨",
+            "origin": 1,
+            "content": "fairy i love you",
+            "blogTime": "2019-03-19",
+            "great": 2,
+            "share": 0,
+            "images": [
+                "1.jpg"
+            ],
+            "title": "title"
+        },
+        {
+            "id": 28,
+            "u_id": 12,
+            "userName": "yy",
+            "origin": 12,
+            "content": "fairy",
+            "blogTime": "2019-03-10",
+            "great": 0,
+            "share": 0,
+            "images": [
+                "1.jpg",
+                "2.jpg"
+            ],
+            "title": "title"
+        },
+        {
+            "id": 6,
+            "u_id": 123,
+            "userName": "fairy",
+            "origin": 123,
+            "content": "I love programmer!!!",
+            "blogTime": "2019-03-09",
+            "great": 0,
+            "share": 0,
+            "images": [
+                "ffadfaf",
+                "fsgfsgsgshjhklj"
+            ],
+            "title": " "
+        }
+    ]
+}
 ```
 
 
