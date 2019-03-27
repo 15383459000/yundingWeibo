@@ -2,6 +2,7 @@ package servlet;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import entity.BlogS;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -17,6 +18,7 @@ import java.util.*;
 /**
  * 只能使用form表单接收
  * 输出图片保存的路径
+ *
  * @author guohaodong
  */
 @WebServlet(name = "Upload", urlPatterns = "/servlet/Upload")
@@ -36,16 +38,16 @@ public class Upload extends HttpServlet {
      */
     private List<String> upload(HttpServletRequest request) {
         //创建工厂
-        DiskFileItemFactory factory = new DiskFileItemFactory ();
+        DiskFileItemFactory factory = new DiskFileItemFactory();
 
         //通过工厂创建解析器
-        ServletFileUpload fileUpload = new ServletFileUpload ( factory );
+        ServletFileUpload fileUpload = new ServletFileUpload(factory);
 
         //设置upload的编码
-        fileUpload.setHeaderEncoding ( "UTF-8" );
+        fileUpload.setHeaderEncoding("UTF-8");
 
         //判断上传表单的类型
-        if (!ServletFileUpload.isMultipartContent ( request )) {
+        if (!ServletFileUpload.isMultipartContent(request)) {
             //上传表单为普通表单，则按照传统方式获取数据即可
             return null;
         }
@@ -53,52 +55,56 @@ public class Upload extends HttpServlet {
         try {
 
             //解析request对象，得到List
-            List<FileItem> list = fileUpload.parseRequest ( request );
+            List<FileItem> list = fileUpload.parseRequest(request);
 
             //遍历List，判断装载的内容是普通字段还是上传文件
-            List<String> paths = new ArrayList<> ( 1 );
+            List<String> paths = new ArrayList<>(1);
             for (FileItem fileItem : list) {
 
                 //如果是普通输入项
 //                if (fileItem.isFormField ()) {
 //                } else {
 
-                if (!fileItem.isFormField()) {
+                if (!fileItem.isFormField() && !fileItem.getName().equals("")) {
                     //如果是上传文件
 
                     //得到上传名称
-                    String fileName = fileItem.getName ();
+                    String fileName = fileItem.getName();
                     //生成唯一文件名
-                    fileName = makeFileName ( fileName );
+                    fileName = makeFileName(fileName);
 
-                    InputStream inputStream = fileItem.getInputStream ();
+                    InputStream inputStream = fileItem.getInputStream();
 
                     //得到项目的路径，把上传文件写到项目中
                     String path = this.getServletContext().getRealPath("/uploadFile");
 
                     //得到分散后的目录路径
-                    String realPath = makeDirPath ( fileName, path );
+                    String realPath = makeDirPath(fileName, path);
 
-                    FileOutputStream outputStream = new FileOutputStream ( realPath + SPLIT + fileName );
+                    FileOutputStream outputStream = new FileOutputStream(realPath + SPLIT + fileName);
 
                     byte[] bytes = new byte[1024];
                     int len;
-                    while ((len = inputStream.read ( bytes )) > 0) {
-                        outputStream.write ( bytes, 0, len );
+                    while ((len = inputStream.read(bytes)) > 0) {
+                        outputStream.write(bytes, 0, len);
                     }
 
-                    inputStream.close ();
-                    outputStream.close ();
+                    inputStream.close();
+                    outputStream.close();
 
                     //删除临时文件的数据
-                    fileItem.delete ();
-                    realPath = realPath.substring(realPath.indexOf("uploadFile"));
-                    paths.add ( realPath + SPLIT + fileName );
+                    fileItem.delete();
+                    //返回相对路径
+                    String projectDir = "artifacts";
+//                    String projectDir = "webapps";
+//                    realPath = realPath.substring(realPath.indexOf(""));
+                    realPath = realPath.substring(realPath.indexOf(projectDir) + projectDir.length());
+                    paths.add(realPath + SPLIT + fileName);
 
                 }
             }
             return paths;
-        }catch (FileUploadException | IOException ignore) {
+        } catch (FileUploadException | IOException ignore) {
             ignore.printStackTrace();
         }
         return null;
@@ -114,7 +120,7 @@ public class Upload extends HttpServlet {
     private String makeDirPath(String fileName, String path) {
 
         //通过文件名来算出一级目录和二级目录
-        int hashCode = fileName.hashCode ();
+        int hashCode = fileName.hashCode();
         int dir1 = hashCode & 0xf;
         int dir2 = (hashCode & 0xf0) >> 4;
 
@@ -139,23 +145,19 @@ public class Upload extends HttpServlet {
     private String makeFileName(String fileName) {
 
         //使用下划线把UUID和文件名分割开来，后面可能会解析文件名的。
-        return UUID.randomUUID ().toString () + "_" + fileName;
+        return UUID.randomUUID().toString() + "_" + fileName;
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 //        获取文件路径
-        List list = upload ( request );
-        String[] images = (String[]) list.toArray ( new String[0] );
-        Gson gson = new Gson ();
-        JsonElement result = gson.toJsonTree ( images );
-
-//        输出路径
-        PrintWriter out = response.getWriter ();
-        out.print ( result );
-        out.flush ();
-        out.close ();
+        List<String> list = upload(request);
+        //转化为blogS对象进行输出
+        String[] result = new String[list.size()];
+        result = list.toArray(result);
+//        写入到全局对象中
+        request.getServletContext().setAttribute("imageList", result);
     }
 
 }

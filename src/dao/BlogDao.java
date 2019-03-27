@@ -1,6 +1,8 @@
 package dao;
 
 import entity.Blog;
+import util.DateTo;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,40 +16,41 @@ public class BlogDao {
      * @return blog的集合
      */
     public List<Blog> getAllShareBlogById(int u_id) {
-        Connection conn = null;
+        Connection conn;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            conn = DButil.getConnection ();
+            conn = DButil.getConnection();
             String sql = "select shareBlog from UsersInformation where id=?;";
             // SQL语句
-            stmt = conn.prepareStatement ( sql );
-            stmt.setInt ( 1, u_id );
-            rs = stmt.executeQuery ();
-            String share = new String ();
-            List<Blog> list = new ArrayList<> ();
-            while (rs.next ()) {
-                share = rs.getString ( "shareBlog" );
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, u_id);
+            rs = stmt.executeQuery();
+            String share = new String();
+            List<Blog> list = new ArrayList<>();
+            while (rs.next()) {
+                share = rs.getString("shareBlog");
             }
-            String[] shares = share.split ( "#" );
+            String[] shares = share.split("#");
             for (String i : shares) {
-                list.add ( getBlogById ( i ) );
+                list.add(getBlogById(i));
             }
 
             return list;
             // 返回集合。
-        }catch (Exception ex) {
-            ex.printStackTrace ();
+        } catch (Exception ex) {
+            ex.printStackTrace();
             return null;
         } finally {
             // 释放数据集对象
-            BlogDao.re ( stmt, rs );
+            BlogDao.re(stmt, rs);
         }
     }
 
 
     /**
      * 通过用户id来获取该用户收藏
+     *
      * @param u_id 用户id
      * @return blog的集合
      */
@@ -56,17 +59,17 @@ public class BlogDao {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            conn = DButil.getConnection ();
+            conn = DButil.getConnection();
             String sql = "select favorite from UsersInformation where id=?;";
             // SQL语句
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, u_id);
-            rs = stmt.executeQuery ();
+            rs = stmt.executeQuery();
             List<Blog> list = new ArrayList<>();
-            while (rs.next ()) {
-                String[] favorite = rs.getString ( "favorite" ).split ( "#" );
+            while (rs.next()) {
+                String[] favorite = rs.getString("favorite").split("#");
                 for (String i : favorite) {
-                    list.add ( getBlogById ( i ) );
+                    list.add(getBlogById(i));
                 }
             }
 
@@ -84,6 +87,7 @@ public class BlogDao {
 
     /**
      * 通过用户id来获取文章集合
+     *
      * @param id 用户id
      * @return bolg的集合
      */
@@ -91,8 +95,8 @@ public class BlogDao {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet resultSet = null;
-        UserUtil util = new UserUtil ();
-        List<Blog> list = new ArrayList<Blog> ();
+        UserUtil util = new UserUtil();
+        List<Blog> list = new ArrayList<Blog>();
         // 文章集合
         try {
             conn = DButil.getConnection();
@@ -100,21 +104,22 @@ public class BlogDao {
             // SQL语句
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
-            resultSet = stmt.executeQuery ();
-            list = resultSetToBlog ( resultSet );
+            resultSet = stmt.executeQuery();
+            list = resultSetToBlog(resultSet);
 
 
-                // 把一个文章加入集合
-        }catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace ();
+            // 把一个文章加入集合
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return list;
-            // 返回集合。
+        // 返回集合。
 
     }
 
     /**
      * 添加收藏
+     *
      * @param u_id 用户id
      * @param b_id 博客id
      */
@@ -124,13 +129,13 @@ public class BlogDao {
         ResultSet rs = null;
         String favorite = "";
         try {
-            conn = DButil.getConnection ();
+            conn = DButil.getConnection();
             String sql = "select favorite from UsersInformation where id=?;";
             // SQL语句
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, Integer.valueOf ( u_id ) );
-            rs = stmt.executeQuery ();
-            while (rs.next ()) {
+            stmt.setInt(1, Integer.valueOf(u_id));
+            rs = stmt.executeQuery();
+            while (rs.next()) {
                 favorite = rs.getString("favorite");
             }
             if (favorite != null) {
@@ -138,11 +143,11 @@ public class BlogDao {
             } else {
                 favorite = b_id;
             }
-            updateFavorite ( Integer.valueOf ( u_id), favorite);
+            updateFavorite(Integer.valueOf(u_id), favorite);
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
-            BlogDao.re ( stmt, rs );
+            BlogDao.re(stmt, rs);
         }
         return true;
     }
@@ -159,25 +164,25 @@ public class BlogDao {
         ResultSet rs = null;
         String shareBlog = "";
         try {
-            conn = DButil.getConnection ();
+            conn = DButil.getConnection();
             String sql = "select shareBlog from UsersInformation where id=?;";
             // SQL语句
-            stmt = conn.prepareStatement ( sql );
-            stmt.setInt ( 1, Integer.valueOf ( u_id ) );
-            rs = stmt.executeQuery ();
-            while (rs.next ()) {
-                shareBlog = rs.getString ( "shareBlog" );
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, Integer.valueOf(u_id));
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                shareBlog = rs.getString("shareBlog");
             }
             if (shareBlog != null) {
                 shareBlog += "#" + b_id;
             } else {
                 shareBlog = b_id;
             }
-            updateShareBlog ( Integer.valueOf ( u_id ), shareBlog );
-        }catch (Exception ex) {
-            ex.printStackTrace ();
+            updateShareBlog(Integer.valueOf(u_id), shareBlog);
+        } catch (Exception ex) {
+            ex.printStackTrace();
         } finally {
-            BlogDao.re( stmt, rs );
+            BlogDao.re(stmt, rs);
         }
         return true;
     }
@@ -185,31 +190,31 @@ public class BlogDao {
     /**
      * 更新转发人
      *
-     * @param u_id       用户id
+     * @param u_id      用户id
      * @param shareBlog 新的转发单
      */
     private void updateShareBlog(int u_id, String shareBlog) {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
-            conn = DButil.getConnection ();
+            conn = DButil.getConnection();
             String sql = " update UsersInformation " +
                     "set shareBlog=? " +
                     " where id=? ";
-            stmt = conn.prepareStatement ( sql );
-            stmt.setString ( 1, shareBlog );
-            stmt.setInt ( 2, u_id );
-            stmt.execute ();
-        }catch (Exception ex) {
-            ex.printStackTrace ();
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, shareBlog);
+            stmt.setInt(2, u_id);
+            stmt.execute();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         } finally {
             // 释放语句对象
             if (stmt != null) {
                 try {
-                    stmt.close ();
+                    stmt.close();
                     stmt = null;
-                }catch (Exception ex) {
-                    ex.printStackTrace ();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
             }
         }
@@ -217,6 +222,7 @@ public class BlogDao {
 
     /**
      * 更新收藏文章
+     *
      * @param u_id     用户id
      * @param favorite 新的收藏
      */
@@ -224,15 +230,15 @@ public class BlogDao {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
-            conn = DButil.getConnection ();
+            conn = DButil.getConnection();
 
 
-            String sql = " update UsersInformation "+
+            String sql = " update UsersInformation " +
                     "set favorite=? " +
                     " where id=? ";
-            stmt = conn.prepareStatement ( sql );
-            stmt.setString ( 1, favorite );
-            stmt.setInt ( 2, u_id );
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, favorite);
+            stmt.setInt(2, u_id);
             stmt.execute();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -251,17 +257,22 @@ public class BlogDao {
 
     /**
      * 图片路径数组该字符串
+     *
      * @param images 图片路径数组
      * @return 图片路径以#隔开
      */
     private String imagesDao(String[] images) {
-        String image = images[0];
-        if (images.length > 1) {
+
+        if (images != null && images.length > 0) {
+            String image = images[0];
             for (int i = 1; i < images.length; i++) {
                 image += "#" + images[i];
             }
+            return image;
+        } else {
+            return "#";
         }
-        return image;
+
     }
 
     /**
@@ -270,30 +281,30 @@ public class BlogDao {
      * @param b_id 用户id
      * @return 图片路径数组
      */
-    public String[] returnImages(int b_id){
+    public String[] returnImages(int b_id) {
         //创建连接
         Connection conn = null;
         //创建sql语句
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        String []images=null;
+        String[] images = null;
         try {
-            conn = DButil.getConnection ();
+            conn = DButil.getConnection();
             String sql = "select image from blog where id=?;";
             // SQL语句
-            stmt = conn.prepareStatement ( sql );
-            stmt.setInt ( 1, b_id );
-            rs = stmt.executeQuery ();
-            while (rs.next ()) {
-                if (rs.getString ( "image" ) != null) {
-                    images = rs.getString ( "image" ).split ( "#" );
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, b_id);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                if (rs.getString("image") != null) {
+                    images = rs.getString("image").split("#");
                 }
             }
-        }catch (Exception ex) {
-            ex.printStackTrace ();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         } finally {
             // 释放数据集对象
-            BlogDao.re ( stmt, rs );
+            BlogDao.re(stmt, rs);
         }
         return images;
     }
@@ -304,26 +315,22 @@ public class BlogDao {
      * @param blog 博客对象
      */
     public boolean addBlog(Blog blog) {
+        //获取数据库连接
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
-            conn = DButil.getConnection ();
-            String sql = "insert into blog (u_id,userName,content,blogTime,image,title,origin)  values (?,?,?,current_timestamp (),?,?,?)";
-            stmt = conn.prepareStatement ( sql );
-            stmt.setInt ( 1, blog.getU_id () );
-            stmt.setString ( 2, blog.getUserName () );
-            stmt.setString ( 3, blog.getContent () );
-            try {
-                stmt.setString ( 4, imagesDao ( blog.getImages () ) );
-            }catch (NullPointerException ignore) {
-                stmt.setString(4, "#");
-            }
-            try {
-                stmt.setString ( 5, blog.getTitle () );
-            }catch (NullPointerException ignore) {
-                stmt.setString ( 5, null );
-            }
-            stmt.setInt ( 6, blog.getOrigin () );
+            conn = DButil.getConnection();
+            String sql = "insert into blog (u_id,userName,content,image,title,origin,originName,blogTime)  values (?,?,?,?,?,?,?,?)";
+            stmt = conn.prepareStatement(sql);
+//            将对象写入数据库
+            stmt.setInt(1, blog.getU_id());
+            stmt.setString(2, blog.getUserName());
+            stmt.setString(3, blog.getContent());
+            stmt.setString(4, imagesDao(blog.getImages()));
+            stmt.setString(5, blog.getTitle());
+            stmt.setInt(6, blog.getOrigin());
+            stmt.setString(7, blog.getOriginName());
+            stmt.setString(8, blog.getBlogTime());
             stmt.execute();
             // 返回集合。
         } catch (Exception ex) {
@@ -348,18 +355,18 @@ public class BlogDao {
      *
      * @param id 博客id
      */
-    public boolean deleteBlog(String id){
+    public boolean deleteBlog(String id) {
         Connection conn;
         PreparedStatement stmt;
         try {
-            conn = DButil.getConnection ();
+            conn = DButil.getConnection();
             String sql = "delete from blog where id=?;";
             // SQL语句
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, Integer.valueOf(id));
             stmt.execute();
         } catch (Exception ex) {
-            ex.printStackTrace ();
+            ex.printStackTrace();
         }
         return true;
     }
@@ -370,19 +377,19 @@ public class BlogDao {
      * @param id      博客id
      * @param content 内容
      */
-    public boolean updateBlog(String id,String content){
+    public boolean updateBlog(String id, String content) {
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
             conn = DButil.getConnection();
 
 
-            String sql=    " update blog "+
+            String sql = " update blog " +
                     "set content=? " +
                     " where id=? ";
             stmt = conn.prepareStatement(sql);
-            stmt.setClob(1,new javax.sql.rowset.serial.SerialClob(content.toCharArray()));
-            stmt.setInt(2,Integer.valueOf(id));
+            stmt.setClob(1, new javax.sql.rowset.serial.SerialClob(content.toCharArray()));
+            stmt.setInt(2, Integer.valueOf(id));
             stmt.execute();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -393,7 +400,7 @@ public class BlogDao {
                     stmt.close();
                     stmt = null;
                 } catch (Exception ex) {
-                    ex.printStackTrace ();
+                    ex.printStackTrace();
                 }
             }
         }
@@ -401,62 +408,31 @@ public class BlogDao {
     }
 
     /**
-     *更新点赞数
+     * 点赞
+     *
      * @param id 博客id
-     * @param great 新点赞数
      */
-    private void updateGreat(String id,int great){
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        try {
-            conn = DButil.getConnection();
-            String sql=" update blog  set great=?  where id=?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, great);
-            stmt.setInt(2,Integer.valueOf(id));
-            stmt.execute();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        } finally {
-            // 释放语句对象
-            if (stmt != null) {
-                try {
-                    stmt.close();
-                    stmt = null;
-                } catch (Exception ex) {
-                    ex.printStackTrace ();
-                }
-            }
-        }
+    public void addGreat(String id) throws SQLException, ClassNotFoundException {
+        Connection connection = DButil.getConnection();
+        String sql = "update blog set great=great+1 where id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, id);
+        preparedStatement.execute();
+
     }
 
     /**
-     *点赞
+     * 点赞
+     *
      * @param id 博客id
      */
-    public void addGreat(String id){
-        Connection conn;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        int great = 0;
-        try {
-            conn = DButil.getConnection ();
-            String sql = "select great from blog where id=?;";
-            // SQL语句
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, Integer.valueOf(id));
-            rs= stmt.executeQuery();
-            while (rs.next()){
-                great=rs.getInt("great");
-            }
-            great++;
-            updateGreat(id,great);
-        } catch (Exception ex) {
-            ex.printStackTrace ();
-        } finally {
-            // 释放数据集对象
-            BlogDao.re ( stmt, rs );
-        }
+    public void addShare(String id) throws SQLException, ClassNotFoundException {
+        Connection connection = DButil.getConnection();
+        String sql = "update blog set share=great+1 where id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, id);
+        preparedStatement.execute();
+
     }
 
     /**
@@ -466,47 +442,43 @@ public class BlogDao {
      * @return blog的list集合
      */
     public List<Blog> getCharts(String v) throws SQLException, ClassNotFoundException {
-        Connection conn = DButil.getConnection ();
-        StringBuilder sb = new StringBuilder ();
-//        if (v.equals ( great )) {
-//            sb.append ( "select * from blog order by great desc" );
-//        } else {
-//            sb.append ( "select * from blog order by share desc" );
-//        }
+        Connection conn = DButil.getConnection();
+        StringBuilder sb = new StringBuilder();
         switch (v) {
             case "great": {
-                sb.append ( "select * from blog order by great desc limit 10" );
+                sb.append("select * from blog order by great desc limit 10");
                 break;
             }
             case "share": {
-                sb.append ( "select * from blog order by share desc limit 10" );
+                sb.append("select * from blog order by share desc limit 10");
                 break;
             }
             default: {
-                sb.append ( "select * from blog order by id desc limit 10" );
+                sb.append("select * from blog order by id desc limit 10");
             }
         }
 
-        PreparedStatement ptmt = conn.prepareStatement ( sb.toString () );
+        PreparedStatement ptmt = conn.prepareStatement(sb.toString());
 
-        ResultSet rs = ptmt.executeQuery ();
+        ResultSet rs = ptmt.executeQuery();
 
 
-        return BlogDao.resultSetToBlog ( rs );
+        return BlogDao.resultSetToBlog(rs);
     }
 
     /**
      * 清空语句和结果集缓存
+     *
      * @param stmt 要清空的语句
-     * @param rs 要清空的结果集
+     * @param rs   要清空的结果集
      */
-    private static void re(PreparedStatement stmt , ResultSet rs ){
+    private static void re(PreparedStatement stmt, ResultSet rs) {
         // 释放数据集对象
         if (rs != null) {
             try {
                 rs.close();
             } catch (Exception ex) {
-                ex.printStackTrace ();
+                ex.printStackTrace();
             }
         }
         // 释放语句对象
@@ -523,18 +495,18 @@ public class BlogDao {
      * 通过b_id获得文章对象
      */
     public Blog getBlogById(String b_id) throws SQLException, ClassNotFoundException {
-        Connection connection = DButil.getConnection ();
+        Connection connection = DButil.getConnection();
         // SQL语句
         String sql = "select * from blog where id=?;";
-        PreparedStatement preparedStatement = connection.prepareStatement ( sql );
-        preparedStatement.setString ( 1,b_id );
-        preparedStatement.execute ();
-        ResultSet resultSet = preparedStatement.getResultSet ();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, b_id);
+        preparedStatement.execute();
+        ResultSet resultSet = preparedStatement.getResultSet();
 
         //遍历结果集实例化blog
-        Blog blog = resultSetToBlog(resultSet).get(1);
+        Blog blog = resultSetToBlog(resultSet).get(0);
         // 释放数据集对象
-        BlogDao.re ( preparedStatement, resultSet );
+        BlogDao.re(preparedStatement, resultSet);
 
 
         return blog;
@@ -548,30 +520,32 @@ public class BlogDao {
      * @throws SQLException
      * @throws ClassNotFoundException
      */
-    protected static List<Blog> resultSetToBlog(ResultSet resultSet) throws SQLException, ClassNotFoundException {
-        List<Blog> list = new ArrayList<> ( 1 );
+    protected static List<Blog> resultSetToBlog(ResultSet resultSet) throws SQLException {
+        List<Blog> list = new ArrayList<>(1);
         Blog blog;
-        while (resultSet.next ()) {
-            blog = new Blog (
-                    resultSet.getInt ( "id" ),
-                    resultSet.getInt ( "u_id" ),
-                    resultSet.getString ( "userName" ),
-                    resultSet.getInt ( "origin" ),
-                    resultSet.getString ( "content" ),
-                    resultSet.getDate ( "blogTime" ).toString (),
-                    resultSet.getInt ( "great" ),
-                    resultSet.getInt ( "share" ),
-                    resultSet.getString ( "greatPerson" ),
-                    resultSet.getString ( "sharePerson" ),
-                    resultSet.getString ( "comment" ),
-                    resultSet.getString ( "image" ).split ( "#" ),
-                    resultSet.getString ( "title" )
+        while (resultSet.next()) {
+            blog = new Blog(
+                    resultSet.getInt("id"),
+                    resultSet.getInt("u_id"),
+                    resultSet.getString("userName"),
+                    resultSet.getInt("origin"),
+                    resultSet.getString("content"),
+                    resultSet.getString("blogTime"),
+                    resultSet.getInt("great"),
+                    resultSet.getInt("share"),
+                    resultSet.getString("greatPerson"),
+                    resultSet.getString("sharePerson"),
+                    resultSet.getString("comment"),
+                    resultSet.getString("image").split("#"),
+                    resultSet.getString("title"),
+                    resultSet.getString("originName")
             );
-            list.add ( blog );
+            //判断是否是今天发布
+            blog.setBlogTime(DateTo.dateTotoday(blog.getBlogTime()));
+            list.add(blog);
         }
         return list;
     }
-
 
 
 }

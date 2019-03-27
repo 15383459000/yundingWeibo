@@ -2,6 +2,7 @@ package servlet;
 
 import com.google.gson.Gson;
 import dao.BlogDao;
+import entity.BlogS;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,15 +19,19 @@ import java.sql.SQLException;
 public class ChartsTime extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        设置编码格式
         response.setContentType ( "text/html;charset=utf-8" );
         PrintWriter out = response.getWriter ();
         BlogDao blogDao = new BlogDao ();
         Gson gson = new Gson ();
+        BlogS blogS = new BlogS();
 
         try {
-            String json = gson.toJson ( blogDao.getCharts ( "time" ) );
+            blogS.setBlogList(blogDao.getCharts("time"));
+            String json = gson.toJson(blogS);
             out.print ( json );
         }catch (SQLException | ClassNotFoundException e) {
+            //出现数据库异常返回-1
             out.print ( "\"status\":\"-1\"" );
         }
         out.flush ();

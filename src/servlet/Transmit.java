@@ -34,11 +34,12 @@ public class Transmit extends HttpServlet {
         //        实例化用户文章工具
         BlogDao blogDao = new BlogDao ();
         Gson gson = new Gson ();
-        //        获取json
+        //        获取blogS对象userId blogId
         BlogS blogS = gson.fromJson ( Json.getString ( request ), BlogS.class );
 
         Users user = blogS.getUsers ();
         try {
+            blogDao.addShare(String.valueOf(blogS.getBlog().getId()));
             Blog blog = blogDao.getBlogById ( String.valueOf ( blogS.getBlog ().getId () ) );
             blog.setUserName ( user.getUserName () );
             blog.setU_id ( user.getId () );

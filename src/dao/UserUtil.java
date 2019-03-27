@@ -14,18 +14,6 @@ import java.sql.SQLException;
 public class UserUtil {
 
 
-    /**
-     * 通过用户id获取对象
-     *
-     * @param userId 用户的id号
-     * @return Users类型的对象，查询不到返回NULL
-     * @throws SQLException
-     */
-    public Users getUsersById(String userId) throws SQLException, ClassNotFoundException {
-        Users user = DButil.referUser ( "id", userId );
-
-        return user;
-    }
 
 
     /**

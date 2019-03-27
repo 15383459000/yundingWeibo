@@ -3,6 +3,8 @@ package servlet;
 import com.google.gson.Gson;
 import dao.UsersInformation;
 import entity.Users;
+import util.Json;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,19 +34,38 @@ public class UsersInformationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        //男性女性的默认照片
+        String MALE = "/SimpleWeibo_war_exploded/image/male.jpeg";
+        String FEMALE = "/SimpleWeibo_war_exploded/image/female.jpeg";
+        String DEFAULT = "/SimpleWeibo_war_exploded/image/default.jpg";
         //设置编码格式
         response.setContentType ( "text/json;charset=UTF-8" );
         response.setCharacterEncoding ( "UTF-8" );
         PrintWriter out = response.getWriter ();
 
         //获取json
-        String usersinformationJson = getJson ( request );
+        String usersinformationJson = Json.getString(request);
 
         //解析json为users对象
         Gson gson = new Gson ();
         Users u = gson.fromJson ( usersinformationJson, Users.class );
-
-        String json = gson.toJson ( usersinformationDao.get ( String.valueOf ( u.getId () ) ) );
+        u = usersinformationDao.get(String.valueOf(u.getId()));
+        if (u.getSex() != null) {
+            switch (u.getSex()) {
+                case "男": {
+                    u.setImage(MALE);
+                    break;
+                }
+                case "女": {
+                    u.setImage(FEMALE);
+                    break;
+                }
+                default: {
+                    u.setImage(DEFAULT);
+                }
+            }
+        }
+        String json = gson.toJson(u);
         System.out.println ( json );
         out.println ( json );
         out.flush ();
@@ -52,15 +73,4 @@ public class UsersInformationServlet extends HttpServlet {
 
     }
 
-    private static String getJson(HttpServletRequest request) throws IOException {
-        //        获取json
-        BufferedReader br = new BufferedReader ( new InputStreamReader ( request.getInputStream (), StandardCharsets.UTF_8 ) );
-        StringBuilder sb = new StringBuilder ();
-        String temp;
-        while ((temp = br.readLine ()) != null) {
-            sb.append ( temp );
-        }
-        br.close ();
-        return URLDecoder.decode ( sb.toString (), StandardCharsets.UTF_8 );
-    }
 }

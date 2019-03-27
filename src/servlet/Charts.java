@@ -35,7 +35,9 @@ public class Charts extends HttpServlet {
         BlogDao blogDao = new BlogDao ();
         if (action != null) {
                 try {
-                    String jsons = gson.toJson ( blogDao.getCharts ( action ) );
+                    blogS.setBlogList(blogDao.getCharts(action));
+                    blogS.setAction(null);
+                    String jsons = gson.toJson(blogS);
                     out.println ( jsons );
                     out.flush ();
                     out.close ();

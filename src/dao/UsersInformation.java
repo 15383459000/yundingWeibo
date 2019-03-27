@@ -29,7 +29,6 @@ public class UsersInformation {
             Users UsersInformation = new Users ();
             while (rs.next ()) {
                 UsersInformation.setId ( Integer.valueOf ( rs.getString ( "id" ) ) );
-                UsersInformation.setNickName ( rs.getString ( "nickName" ) );
                 UsersInformation.setUserName ( rs.getString ( "userName" ) );
                 UsersInformation.setPassword ( rs.getString ( "password" ) );
                 UsersInformation.setSex ( rs.getString ( "sex" ) );
@@ -115,13 +114,7 @@ public class UsersInformation {
                 stmt.setInt ( 2, u.getId () );
                 stmt.execute ();
             }
-            if (u.getNickName () != null) {
-                String sql = " update UsersInformation  set nickName=?  where id=?";
-                stmt = conn.prepareStatement ( sql );
-                stmt.setString ( 1, u.getNickName () );
-                stmt.setInt ( 2, u.getId () );
-                stmt.execute ();
-            }
+
             if (u.getPassword () != null) {
                 String sql = " update UsersInformation  set password=?  where id=?";
                 stmt = conn.prepareStatement ( sql );

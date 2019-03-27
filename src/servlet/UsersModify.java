@@ -39,6 +39,12 @@ public class UsersModify extends HttpServlet {
         //解析json为users对象
         Gson gson = new Gson ();
         Users u = gson.fromJson ( usersinformationJson, Users.class );
+        try {
+            u.setImage(((String[]) request.getServletContext().getAttribute("imageList"))[0]);
+            request.getServletContext().removeAttribute("imageList");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         //实例化用户工具
         UsersInformation usersinformationDao = new UsersInformation ();
 
