@@ -442,27 +442,32 @@ public class BlogDao {
      * @return blog的list集合
      */
     public List<Blog> getCharts(String v) throws SQLException, ClassNotFoundException {
+//        获取数据库连接
         Connection conn = DButil.getConnection();
+//        创建SringBuilder对象 将操作语句附加进去
         StringBuilder sb = new StringBuilder();
         switch (v) {
             case "great": {
+//                点赞量降序排列
                 sb.append("select * from blog order by great desc limit 10");
                 break;
             }
             case "share": {
+//                分享量降序排列
                 sb.append("select * from blog order by share desc limit 10");
                 break;
             }
             default: {
-                sb.append("select * from blog order by id desc limit 10");
+                //时间降序排列
+                sb.append("select * from blog order by blogTime desc limit 10");
             }
         }
-
+//        预处理语句
         PreparedStatement ptmt = conn.prepareStatement(sb.toString());
-
+//        获取数据集
         ResultSet rs = ptmt.executeQuery();
 
-
+//        将resultSet解析为blog对象
         return BlogDao.resultSetToBlog(rs);
     }
 
@@ -513,7 +518,7 @@ public class BlogDao {
     }
 
     /**
-     * 利用数据集返回单个blog对象
+     * 利用数据集返回blog
      *
      * @param resultSet
      * @return
@@ -540,8 +545,6 @@ public class BlogDao {
                     resultSet.getString("title"),
                     resultSet.getString("originName")
             );
-            //判断是否是今天发布
-            blog.setBlogTime(DateTo.dateTotoday(blog.getBlogTime()));
             list.add(blog);
         }
         return list;
